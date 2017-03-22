@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom';
 
 // COMPONENTS-------------------
 import Nav_bar from './components/Nav_bar'
+import List_items from './components/List_items'
 
 
 class App extends Component {
 
   render() {
     return (
-          <Nav_bar />
+      <div>
+        <Nav_bar />
+        <List_items />
+      </div>
     )
   }
 }

@@ -6,17 +6,26 @@ export default class Nav_bar extends Component {
    }
    render() {
       return (
-         <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <a className="navbar-brand" href="#">React</a>
-            <ul className="nav navbar-nav">
-               <li className="active">
-                  <a href="#">Home</a>
-               </li>
-               <li>
-                  <a href="#">Link</a>
-               </li>
-            </ul>
-         </nav>
+         <div className="nav-container">
+            <nav className="upper-nav">
+               <span className="logo">SoundReact</span>
+               <form >
+                  <input type="text" placeholder="search" />
+               </form>
+            </nav>
+            <nav className="lower-nav">
+               <ul>
+                  <li><a href="#">Chill</a></li>
+                  <li><a href="#">Deep</a></li>
+                  <li><a href="#">Dubstep</a></li>
+                  <li><a href="#">House</a></li>
+                  <li><a href="#">Progressive</a></li>
+                  <li><a href="#">Tech</a></li>
+                  <li><a href="#">Trance</a></li>
+               </ul>
+            </nav>
+
+         </div>
       )
    }
 }
