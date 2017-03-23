@@ -7,9 +7,29 @@ export default class List_items extends Component {
    }
    render() {
       return (
-         <div>
-            <h1>List items Component</h1>
+         <div className="songs-container">
+            <div className="list-container">
             <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            <List_item />
+            </div>
          </div>
       )
    }

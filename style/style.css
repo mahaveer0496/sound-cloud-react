@@ -23,7 +23,7 @@ nav.upper-nav {
    position: relative
 }
 
-div nav.lower-nav {   
+div nav.lower-nav {
    width: 100%
 }
 
@@ -65,9 +65,12 @@ nav ul {
    list-style: none;
    padding-left: 0;
    text-align: center;
+   margin: 0 auto;
+   width: 75%
 }
 
 nav ul li {
+   box-shadow: 0 2px 2px #e3e3e3;
    display: inline-block;
    width: 14.2%;
    border-right: 1px solid #e3e3e3;
@@ -89,6 +92,74 @@ nav ul li a {
    color: inherit;
    text-decoration: none;
 }
-nav ul li a:hover{
+
+nav ul li a:hover {
    text-decoration: none
+}
+
+.songs-container {
+   width: 100%;
+   background-color: #F4F4F4;
+   padding: 50px 0;
+}
+
+.list-container {
+   margin: 0 auto;
+   width: 75%;
+   text-align: center
+}
+
+.list-item {
+   display: inline-block;
+   padding: 10px;
+   width: 214px;
+   height: 132px;
+   margin: 8px;
+   background: white;
+   border: 1px solid #e3e3e3;
+}
+
+.list-item .song-image {
+   width: 100%;
+   height: 70px;
+   background-image: url(https://i1.sndcdn.com/artworks-000048548811-igf2vy-t300x300.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: 50%;
+}
+
+.song-details {
+   display: inline-block;
+   width: 100%;
+   padding: 10px 3px;
+}
+
+.song-details .user-image {
+   display: block;
+   width: 24px;
+   height: 24px;
+   margin-top: 4px;
+   margin-right: 10px;
+   border-radius: 100%;
+   float: left;
+}
+
+.song-details a {
+   font-size: 12px;
+   text-decoration: none;
+   color: #2B2B2B;
+   display: block;
+   font-size: 11px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   text-align: left
+}
+
+.song-details a:hover {
+   text-decoration: none
+}
+
+a.user-name {
+   color: #7981B9
 }
