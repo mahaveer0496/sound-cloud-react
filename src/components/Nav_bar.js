@@ -3,14 +3,20 @@ import React, { Component } from 'react'
 export default class Nav_bar extends Component {
    constructor(props) {
       super(props);
+      this.search = this.search.bind(this)
+   }
+   search(e) {
+      e.preventDefault();
+      var searchParam = encodeURIComponent(this.refs.searchTerm.value)
+      this.props.onSearchHandler(searchParam)
    }
    render() {
       return (
          <div className="nav-container">
             <nav className="upper-nav">
                <span className="logo">SoundReact</span>
-               <form >
-                  <input type="text" placeholder="search" />
+               <form onSubmit={this.search}>
+                  <input type="text" placeholder="search" ref="searchTerm" /> 
                </form>
             </nav>
             <nav className="lower-nav">

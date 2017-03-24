@@ -6,12 +6,47 @@ import * as SC from 'soundcloud';
 import Nav_bar from './components/Nav_bar';
 import List_items from './components/List_items';
 
+
+
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.searchHandler = this.searchHandler.bind(this)
+    this.state = {
+      tracks: []
+    }
+
+  }
+
+  componentWillMount() {
+    SC.initialize({
+      client_id: '340f063c670272fac27cfa67bffcafc4'
+    });
+    SC.get('/tracks/', {
+      q: 'hiphop', limit: 10
+    }).then((data) => {
+      this.setState({
+        tracks: data
+      })
+    });
+  }
+
+  searchHandler(searchTerm) {
+    console.log(`searchHandler was called`);
+    SC.get('/tracks/', {
+      q: searchTerm, limit: 10
+    }).then((data) => {
+      this.setState({
+        tracks: data,
+      })
+    });
+  }
   render() {
     return (
       <div>
-        <Nav_bar />
-        <List_items />
+        <Nav_bar onSearchHandler={this.searchHandler} />
+        <List_items tracks={this.state.tracks} />
       </div>
     )
   }
@@ -19,18 +54,20 @@ class App extends Component {
 
 ReactDOM.render(<App />, document.querySelector('.app'));
 
-// const API_KEY = 'f4323c6f7c0cd73d2d786a2b1cdae80c'
 
+// AUTHENTICATE soundcloud
 // SC.initialize({
-//   client_id: API_KEY
+//   client_id: '340f063c670272fac27cfa67bffcafc4',
+//   redirect_uri: 'http://external.codecademy.com/soundcloud.html'
 // });
 
-// SC.get('/tracks', {
-//   q: 'buskers', license: 'cc-by-sa'
-// }).then(function(tracks) {
-//   console.log(tracks);
-// });
-
-// SC.stream('/tracks/293').then(function(player){
-//   player.play();
+// $(document).ready(function() {
+//   $('a.connect').click(function(e) {
+//     e.preventDefault();
+//     SC.connect(function(){
+//         SC.get('/me', function(me){
+//             $('#username').html(me.username)
+//         })    
+//     })
+//   });
 // });

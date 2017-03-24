@@ -5,9 +5,14 @@
    color: white;
 }
 
+div.app {
+   display: none
+}
+
 body {
    font-size: 20px;
    font-family: 'Open Sans', sans-serif;
+   position: relative
 }
 
 div.nav-container {
@@ -18,7 +23,7 @@ nav.upper-nav {
    background-color: #3A3F41;
    margin: 0 auto;
    height: 50px;
-   width: 1170px;
+   width: 76.2%;
    line-height: 50px;
    position: relative
 }
@@ -122,7 +127,7 @@ nav ul li a:hover {
 .list-item .song-image {
    width: 100%;
    height: 70px;
-   background-image: url(https://i1.sndcdn.com/artworks-000048548811-igf2vy-t300x300.jpg);
+   /*background-image: url(https://i1.sndcdn.com/artworks-000048548811-igf2vy-t300x300.jpg);*/
    background-repeat: no-repeat;
    background-size: cover;
    background-position: 50%;

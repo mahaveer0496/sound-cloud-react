@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 
-export default function List_item(props) {
+export default function List_item({ songImg, userImg, title, genre }) {
+
    return (
       <div className="list-item">
-         <div className="song-image"></div>
+         <div className="song-image" style={{ backgroundImage: `url(${songImg})` }}></div>
          <div className="song-details">
-            <img src="https://i1.sndcdn.com/avatars-000128151894-lt86u8-large.jpg" alt="user-avatar" className="user-image" />
-            <a>Marin Garrix Trend Setter</a>
-
-            <a href="#" className="user-name">iamdubstep</a>
+            <img src={userImg} alt="user-avatar" className="user-image" />
+            <a href="#">{title}</a>
+            <a href="#" className="user-name">{genre}</a>
          </div>
       </div>
    )

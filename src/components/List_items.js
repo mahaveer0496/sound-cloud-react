@@ -9,26 +9,16 @@ export default class List_items extends Component {
       return (
          <div className="songs-container">
             <div className="list-container">
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
-            <List_item />
+               {this.props.tracks.map(track => 
+                     
+                     <List_item
+                        key={track.id}
+                        title={track.title}
+                        genre={track.genre}
+                        songImg={track.artwork_url}
+                        userImg={track.user.avatar_url} />
+                  
+               )}
             </div>
          </div>
       )
