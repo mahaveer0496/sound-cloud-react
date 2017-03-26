@@ -18,7 +18,10 @@ class App extends Component {
     this.clickHandler = this.clickHandler.bind(this);
     this.state = {
       tracks: [],
-      streamUrl: ''
+      streamUrl: '',
+      songImg: '',
+      title: '',
+      genre: ''
     }
 
   }
@@ -49,9 +52,12 @@ class App extends Component {
     });
   }
 
-  clickHandler(streamUrl) {
+  clickHandler(trackInfoObject) {
     this.setState({
-      streamUrl: streamUrl
+      streamUrl: trackInfoObject.streamUrl,
+      songImg: trackInfoObject.songImg,
+      genre: trackInfoObject.genre,
+      title: trackInfoObject.title
     })
   }
   render() {
@@ -59,7 +65,7 @@ class App extends Component {
       <div>
         <Nav_bar onSearchHandler={this.searchHandler} />
         <List_items tracks={this.state.tracks} onClickHandler={this.clickHandler} />
-        <Player streamUrl={this.state.streamUrl} />
+        <Player streamUrl={this.state.streamUrl} title={this.state.title} genre={this.state.genre} songImg={this.state.songImg} />
       </div>
     )
   }

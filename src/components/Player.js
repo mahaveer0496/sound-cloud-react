@@ -12,16 +12,17 @@ export default class Player extends Component {
       playButton.play();
    }
    render() {
-      let url = this.props.streamUrl+ '?client_id=340f063c670272fac27cfa67bffcafc4'
+      let{streamUrl, songImg , title , genre} = this.props
+      let url = streamUrl+ '?client_id=340f063c670272fac27cfa67bffcafc4'
       return (
          <div className="player">
             <audio src={url} ref="audio"></audio>
             <div className="player-container">
                <div className="player-song-info">
-                  <img src="https://i1.sndcdn.com/artworks-000008483739-3ypys9-large.jpg" className="player-song-img"></img>
+                  <img src={songImg} className="player-song-img"></img>
                   <div className="player-song-description">
-                     <p className="player-song-title">This is a Song with a big title</p>
-                     <p className="player-song-title">This is a Song title</p>
+                     <p className="player-song-title">{title}</p>
+                     <p className="player-song-title">{genre}</p>
                   </div>
                </div>
                <div className="player-control">
