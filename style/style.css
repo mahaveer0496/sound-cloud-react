@@ -5,10 +5,6 @@
    color: white;
 }
 
-div.app {
-   display: none
-}
-
 body {
    font-size: 20px;
    font-family: 'Open Sans', sans-serif;
@@ -19,24 +15,26 @@ div.nav-container {
    background-color: #3A3F41
 }
 
-nav.upper-nav {
+.upper-nav {
    background-color: #3A3F41;
    margin: 0 auto;
    height: 50px;
-   width: 76.2%;
+   width: 76.3%;
    line-height: 50px;
    position: relative
 }
 
-div nav.lower-nav {
+.lower-nav {
    width: 100%
 }
 
-nav span {
+.logo {
    padding: 0 0 0 10px;
    text-transform: uppercase;
    margin: 10px 30px;
-   letter-spacing: 2px
+   letter-spacing: 2px;
+   font-size: 14px;
+   font-weight: lighter
 }
 
 form {
@@ -48,13 +46,14 @@ form {
    line-height: 40px;
 }
 
-form input[type="text"] {
+input[type="text"] {
    width: 290px;
    padding: 6px 10px 6px 30px;
    color: #e3e3e3;
    font-weight: 300;
    background-color: transparent;
    display: inline-block;
+   height: 40px;
    padding: 0 .875rem;
    border: none;
    background-color: #2B2B2B;
@@ -64,6 +63,35 @@ form input[type="text"] {
    border-radius: 3px;
    -webkit-transition: all .2s ease-in-out;
    transition: all .2s ease-in-out;
+}
+
+input[type="text"]::-webkit-input-placeholder {
+   color: #F4F4F4;
+   font-size: 10px;
+   text-transform: uppercase;
+   letter-spacing: 1.5px;
+   font-family: 'Open sans'
+}
+
+input[type="text"]::-moz-placeholder {
+   color: #F4F4F4;
+   font-size: 10px;
+   text-transform: uppercase;
+   font-family: 'Open sans'
+}
+
+input[type="text"]:-ms-input-placeholder {
+   color: #F4F4F4;
+   font-size: 10px;
+   text-transform: uppercase;
+   font-family: 'Open sans'
+}
+
+input[type="text"]::placeholder {
+   color: #F4F4F4;
+   font-size: 10px;
+   text-transform: uppercase;
+   font-family: 'Open sans'
 }
 
 nav ul {
@@ -124,15 +152,6 @@ nav ul li a:hover {
    border: 1px solid #e3e3e3;
 }
 
-.list-item .song-image {
-   width: 100%;
-   height: 70px;
-   /*background-image: url(https://i1.sndcdn.com/artworks-000048548811-igf2vy-t300x300.jpg);*/
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position: 50%;
-}
-
 .song-details {
    display: inline-block;
    width: 100%;
@@ -167,4 +186,95 @@ nav ul li a:hover {
 
 a.user-name {
    color: #7981B9
+}
+
+
+/*PLAYER SYLES --------------- */
+
+.player {
+   background-color: white;
+   box-shadow: 0 2px 2px 2px #F4F4F4;
+   width: 100%;
+   position: fixed;
+   bottom: 0px;
+   left: 50%;
+   transform: translateX(-50%)
+}
+
+.player-container>* {
+   color: #3A3F41;
+}
+
+.player-container {
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   height: 60px;
+   width: 75%;
+   margin: 0 auto;
+   -webkit-box-align: center;
+   -ms-flex-align: center;
+   align-items: center;
+   -ms-flex-pack: distribute;
+   justify-content: space-around;
+   background-color: white;
+}
+
+.player-song-info {
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-box-align: center;
+   -ms-flex-align: center;
+   align-items: center;
+   font-size: 11px;
+   color: #222
+}
+
+.player-song-title {
+   color: #222
+}
+
+.player-song-img {
+   width: 30px;
+   height: 30px;
+}
+
+.player-song-description {
+   padding: 0 15px;
+   width: 200px;
+}
+
+.player-song-title {
+   overflow: hidden;
+   white-space: nowrap;
+   display: block;
+   text-overflow: ellipsis
+}
+
+.player-control {
+   font-size: 16px;
+   padding: 0 15px;
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   width: 370px;
+   -ms-flex-pack: distribute;
+   justify-content: space-around
+}
+
+.player-control i {
+   color: #3A3F41
+}
+
+.player-seek-bar {
+   width: 400px;
+   height: 2px;
+   background-color: #3A3F41
+}
+
+.player-time {
+   display: inline-block;
+   width: 70px;
+   font-size: 13px;
 }

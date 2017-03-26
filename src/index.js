@@ -5,6 +5,8 @@ import * as SC from 'soundcloud';
 // COMPONENTS-------------------
 import Nav_bar from './components/Nav_bar';
 import List_items from './components/List_items';
+import Player from './components/Player'
+
 
 
 
@@ -12,9 +14,11 @@ import List_items from './components/List_items';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.searchHandler = this.searchHandler.bind(this)
+    this.searchHandler = this.searchHandler.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
     this.state = {
-      tracks: []
+      tracks: [],
+      streamUrl: ''
     }
 
   }
@@ -25,7 +29,9 @@ class App extends Component {
     });
     SC.get('/tracks/', {
       q: 'hiphop', limit: 10
-    }).then((data) => {
+    }).then(data => {
+      // console.log(JSON.stringify(data));
+
       this.setState({
         tracks: data
       })
@@ -36,17 +42,24 @@ class App extends Component {
     console.log(`searchHandler was called`);
     SC.get('/tracks/', {
       q: searchTerm, limit: 10
-    }).then((data) => {
+    }).then(data => {
       this.setState({
         tracks: data,
       })
     });
   }
+
+  clickHandler(streamUrl) {
+    this.setState({
+      streamUrl: streamUrl
+    })
+  }
   render() {
     return (
       <div>
         <Nav_bar onSearchHandler={this.searchHandler} />
-        <List_items tracks={this.state.tracks} />
+        <List_items tracks={this.state.tracks} onClickHandler={this.clickHandler} />
+        <Player streamUrl={this.state.streamUrl} />
       </div>
     )
   }

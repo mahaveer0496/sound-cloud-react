@@ -7,8 +7,9 @@ export default class Nav_bar extends Component {
    }
    search(e) {
       e.preventDefault();
-      var searchParam = encodeURIComponent(this.refs.searchTerm.value)
+      var searchParam = this.refs.searchTerm.value
       this.props.onSearchHandler(searchParam)
+      this.refs.searchTerm.value = ''
    }
    render() {
       return (

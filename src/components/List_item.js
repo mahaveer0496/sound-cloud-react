@@ -1,15 +1,33 @@
 import React, { Component } from 'react'
 
-export default function List_item({ songImg, userImg, title, genre }) {
+export default class List_item extends Component {
+   constructor(props) {
+      super(props);
+      this.handleClick = this.handleClick.bind(this);
+   }
+   handleClick() {
+      console.log(`handleClick was called - ${this.props.streamUrl}`);
+      this.props.onClickHandler(this.props.streamUrl)
+   }
+   render() {
+      var { songImg, userImg, title, genre } = this.props;
+      return (
+         <div onClick={this.handleClick} className="list-item">
+            <div className="song-image" style={{
+               backgroundImage: `url(${songImg})`,
+               width: `${100}%`,
+               height: `${70}px`,
+               backgroundRepeat: 'no-repeat',
+               backgroundSize: 'cover',
+               backgroundPosition: `${50}%`
 
-   return (
-      <div className="list-item">
-         <div className="song-image" style={{ backgroundImage: `url(${songImg})` }}></div>
-         <div className="song-details">
-            <img src={userImg} alt="user-avatar" className="user-image" />
-            <a href="#">{title}</a>
-            <a href="#" className="user-name">{genre}</a>
-         </div>
-      </div>
-   )
+            }}></div>
+            <div className="song-details">
+               <img src={userImg} alt="user-avatar" className="user-image" />
+               <a href="#">{title}</a>
+               <a href="#" className="user-name">{genre}</a>
+            </div>
+         </div >
+      )
+   }
 }

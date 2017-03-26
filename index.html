@@ -6,23 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Sound-Cloud-React</title>
-  <script>
-    window.addEventListener('load', () => {
-      var app = document.querySelector('.app');
-      app.style.display = 'block'
-    })
-  </script>
-  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/style/style.css">
 </head>
 
 <body>
   <div class="app"></div>
-  <!-- Latest compiled and minified CSS & JS -->
-  <script src="//code.jquery.com/jquery.js"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <!--<audio src="https://api.soundcloud.com/tracks/148187401/stream?client_id=e582b63d83a5fb2997d1dbf2f62705da"></audio>-->
+  <!--<div class="playee" style="width:50px; height:50px; background-color: black"></div>-->
   <script src="/bundle.js"></script>
+  <!--<script>
+    var playee = document.querySelector('.playee')
+    var audio = document.querySelector('audio')
+    playee.addEventListener('click', () => {
+      audio.play();
+    })
+    playee.addEventListener('dblclick', () => {
+      audio.pause();
+    })
+  </script>-->
+  
 </body>
 
 </html>
