@@ -3,17 +3,19 @@ import React, { Component } from 'react';
 export default class Player extends Component {
    constructor(props) {
       super(props);
-      this.playSound = this.playSound.bind(this)
-   }
-   playSound() {
-      let playButton = this.refs.audio;
-      console.log(playButton);
-      
-      playButton.play();
+      this.state = {
+         playIconClass: 'ion-play',
+         volumeIconClass: 'ion-volume-medium',
+         loopIconClass: 'ion-loop',
+         duration: '',
+         currentTime: ''
+      }
    }
    render() {
-      let{streamUrl, songImg , title , genre} = this.props
-      let url = streamUrl+ '?client_id=340f063c670272fac27cfa67bffcafc4'
+      let { streamUrl, songImg, title, genre } = this.props;
+      let { currentTime, duration } = this.state;
+      let url = streamUrl + '?client_id=340f063c670272fac27cfa67bffcafc4';
+      let playButton = this.refs.audio;
       return (
          <div className="player">
             <audio src={url} ref="audio"></audio>
@@ -25,16 +27,71 @@ export default class Player extends Component {
                      <p className="player-song-title">{genre}</p>
                   </div>
                </div>
-               <div className="player-control">
+               <div className="player-control" style={{ transition: 'all .5s' }}>
+
+                  {/*-------managing PREVIOUS SONG play-------*/}
                   <i className="ion-ios-rewind" />
-                  <i className="ion-play" onClick={this.playSound} />
+
+
+                  {/*-------managing PLAY and PAUSE----------*/}
+                  <i className={this.state.playIconClass} onClick={() => {
+                     if (playButton.paused) {
+                        playButton.play();
+                        this.setState({
+                           playIconClass: 'ion-pause active',
+                           duration: playButton.duration,
+                           currentTime: playButton.currentTime
+                        })
+                     } else {
+                        playButton.pause();
+                        this.setState({
+                           playIconClass: 'ion-play'
+                        })
+                     }
+                  }} />
+
+                  {/*-------managing NEXT SONG play-------*/}
                   <i className="ion-ios-fastforward" />
-                  <i className="ion-loop" />
-                  <i className="ion-shuffle" />
-                  <i className="ion-volume-medium" />
+
+
+                  {/*--------managing song LOOPING---------------*/}
+                  <i className={this.state.loopIconClass} onClick={() => {
+
+                     if (!playButton.loop) {
+                        playButton.loop = true;
+                        this.setState({
+                           loopIconClass: 'ion-loop active'
+                        })
+                     } else {
+                        playButton.loop = false;
+                        this.setState({
+                           loopIconClass: 'ion-loop'
+                        })
+                     }
+                  }} />
+
+
+                  {/*--------managing the VOLUME----------*/}
+                  <i className={this.state.volumeIconClass} onClick={() => {
+                     if (playButton.volume !== 0) {
+                        playButton.volume = 0
+                        this.setState({
+                           volumeIconClass: 'ion-volume-mute active'
+                        })
+                     } else {
+                        playButton.volume = 1;
+                        this.setState({
+                           volumeIconClass: 'ion-volume-medium'
+                        })
+                     }
+                  }} />
                </div>
                <div className="player-seek-bar"></div>
-               <div className="player-time">3:20/2:00</div>
+               <div className="player-time">
+                  <span style={{ color: `black` }}>{currentTime}</span>
+                  <span style={{ color: `black` }}>/</span>
+                  <span style={{ color: `black` }}>{duration}</span>
+               </div>
             </div>
          </div>
       )

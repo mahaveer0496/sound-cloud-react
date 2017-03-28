@@ -139,7 +139,7 @@ nav ul li a:hover {
 .list-container {
    margin: 0 auto;
    width: 75%;
-   text-align: center
+   text-align: center;
 }
 
 .list-item {
@@ -277,4 +277,8 @@ a.user-name {
    display: inline-block;
    width: 70px;
    font-size: 13px;
+}
+
+.active{
+   color: #3ACCF3 !important;
 }

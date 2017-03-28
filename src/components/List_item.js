@@ -17,8 +17,9 @@ export default class List_item extends Component {
       this.props.onClickHandler(trackInfoObj)
    }
    render() {
-      let { songImg, userImg, title, genre } = this.props;
+      let { songImg, userImg, title, genre , index } = this.props;
       return (
+
          <div onClick={this.handleClick} className="list-item">
             <div className="song-image" style={{
                backgroundImage: `url(${songImg})`,
@@ -35,6 +36,7 @@ export default class List_item extends Component {
                <a href="#" className="user-name">{genre}</a>
             </div>
          </div >
+
       )
    }
 }
