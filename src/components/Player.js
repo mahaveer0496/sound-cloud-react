@@ -3,16 +3,17 @@ import React, { Component } from 'react';
 export default class Player extends Component {
    constructor(props) {
       super(props);
+      this.tick = this.tick.bind(this);
       this.state = {
          playIconClass: 'ion-play',
          volumeIconClass: 'ion-volume-medium',
          loopIconClass: 'ion-loop',
-         duration: '',
-         currentTime: ''
+         duration: 0,
+         currentTime: 0
       }
    }
    render() {
-      let { streamUrl, songImg, title, genre } = this.props;
+      let { streamUrl, songImg, title, genre, resetPlayButton } = this.props;
       let { currentTime, duration } = this.state;
       let url = streamUrl + '?client_id=340f063c670272fac27cfa67bffcafc4';
       let playButton = this.refs.audio;
@@ -88,12 +89,34 @@ export default class Player extends Component {
                </div>
                <div className="player-seek-bar"></div>
                <div className="player-time">
-                  <span style={{ color: `black` }}>{currentTime}</span>
-                  <span style={{ color: `black` }}>/</span>
-                  <span style={{ color: `black` }}>{duration}</span>
+                  {parseInt(currentTime / 60)}:{parseInt(((currentTime / 60) - parseInt(currentTime / 60)) * 60)}
+                  /
+{parseInt(duration / 60)}:{parseInt(((duration / 60) - parseInt(duration / 60)) * 60)}
                </div>
             </div>
          </div>
       )
+   }
+   // updating TRACK TIMER
+   componentDidMount() {
+      this.timerId = setInterval(
+         () => this.tick(),
+         1000
+      )
+   }
+   componentWillUnmount() {
+      clearInterval(this.timerId)
+   }
+   tick() {
+      let playButton = this.refs.audio;
+      this.setState({
+         currentTime: playButton.currentTime,
+         duration: playButton.duration
+      })
+      if (this.state.currentTime == this.state.duration) {
+         this.setState({
+            playIconClass: 'ion-play'
+         })
+      }
    }
 }

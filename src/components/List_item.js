@@ -12,7 +12,8 @@ export default class List_item extends Component {
          songImg: songImg,
          streamUrl: streamUrl,
          title: title,
-         genre: genre
+         genre: genre,   
+         showPlayer: true
       }
       this.props.onClickHandler(trackInfoObj)
    }

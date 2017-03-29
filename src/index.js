@@ -9,8 +9,6 @@ import Player from './components/Player'
 
 
 
-
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -21,20 +19,20 @@ class App extends Component {
       streamUrl: '',
       songImg: '',
       title: '',
-      genre: ''
+      genre: '',
+      resetPlayButton: false,
+      showPlayer: false
     }
-
   }
 
   componentWillMount() {
     SC.initialize({
       client_id: '340f063c670272fac27cfa67bffcafc4'
     });
-    SC.get('/tracks/', {
-      q: 'hiphop', limit: 10
+    SC.get('/tracks', {
+      q: 'original', limit: 10
     }).then(data => {
       // console.log(JSON.stringify(data));
-
       this.setState({
         tracks: data
       })
@@ -43,7 +41,7 @@ class App extends Component {
 
   searchHandler(searchTerm) {
     console.log(`searchHandler was called`);
-    SC.get('/tracks/', {
+    SC.get('/tracks', {
       q: searchTerm, limit: 10
     }).then(data => {
       this.setState({
@@ -53,19 +51,32 @@ class App extends Component {
   }
 
   clickHandler(trackInfoObject) {
+    let { streamUrl, songImg, genre, title, showPlayer } = trackInfoObject
     this.setState({
-      streamUrl: trackInfoObject.streamUrl,
-      songImg: trackInfoObject.songImg,
-      genre: trackInfoObject.genre,
-      title: trackInfoObject.title
+      streamUrl,
+      songImg,
+      genre,
+      title,
+      showPlayer
     })
+    console.log(`${this.state.showPlayer}`);
   }
   render() {
     return (
       <div>
         <Nav_bar onSearchHandler={this.searchHandler} />
-        <List_items tracks={this.state.tracks} onClickHandler={this.clickHandler} />
-        <Player streamUrl={this.state.streamUrl} title={this.state.title} genre={this.state.genre} songImg={this.state.songImg} />
+
+        <List_items
+          tracks={this.state.tracks}
+          onClickHandler={this.clickHandler} />
+
+        {this.state.showPlayer &&
+          <Player
+            streamUrl={this.state.streamUrl}
+            title={this.state.title}
+            genre={this.state.genre}
+            songImg={this.state.songImg}
+            resetPlayButton={this.state.resetPlayButton} />}
       </div>
     )
   }
