@@ -13,6 +13,7 @@ export default class List_items extends Component {
                {this.props.tracks.map((track, index) =>
                   <List_item
                      key={track.id}
+                     indexOfTrack={index}
                      title={track.title}
                      genre={track.genre}
                      songImg={track.artwork_url.replace('large', 't300x300')}

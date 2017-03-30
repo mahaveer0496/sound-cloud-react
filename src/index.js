@@ -20,7 +20,7 @@ class App extends Component {
       songImg: '',
       title: '',
       genre: '',
-      resetPlayButton: false,
+      indexOfTrack: 0,
       showPlayer: false
     }
   }
@@ -51,15 +51,17 @@ class App extends Component {
   }
 
   clickHandler(trackInfoObject) {
-    let { streamUrl, songImg, genre, title, showPlayer } = trackInfoObject
+    let { streamUrl, songImg, genre, title, showPlayer, indexOfTrack } = trackInfoObject
     this.setState({
       streamUrl,
       songImg,
       genre,
       title,
-      showPlayer
+      showPlayer,
+      indexOfTrack
+    }, () => {
+      // console.log(`${this.state.indexOfTrack}`);
     })
-    console.log(`${this.state.showPlayer}`);
   }
   render() {
     return (
@@ -76,7 +78,7 @@ class App extends Component {
             title={this.state.title}
             genre={this.state.genre}
             songImg={this.state.songImg}
-            resetPlayButton={this.state.resetPlayButton} />}
+            indexOfTrack={this.state.indexOfTrack} />}
       </div>
     )
   }

@@ -13,7 +13,7 @@ export default class Player extends Component {
       }
    }
    render() {
-      let { streamUrl, songImg, title, genre, resetPlayButton } = this.props;
+      let { streamUrl, songImg, title, genre, indexOfTrack } = this.props;
       let { currentTime, duration } = this.state;
       let url = streamUrl + '?client_id=340f063c670272fac27cfa67bffcafc4';
       let playButton = this.refs.audio;
@@ -28,21 +28,25 @@ export default class Player extends Component {
                      <p className="player-song-title">{genre}</p>
                   </div>
                </div>
-               <div className="player-control" style={{ transition: 'all .5s' }}>
+               <div className="player-control">
 
                   {/*-------managing PREVIOUS SONG play-------*/}
-                  <i className="ion-ios-rewind" />
+                  <i className="ion-ios-rewind" onClick={() => {
+                     console.log(`${indexOfTrack}`);
+                  }} />
 
 
                   {/*-------managing PLAY and PAUSE----------*/}
                   <i className={this.state.playIconClass} onClick={() => {
                      if (playButton.paused) {
-                        playButton.play();
-                        this.setState({
-                           playIconClass: 'ion-pause active',
-                           duration: playButton.duration,
-                           currentTime: playButton.currentTime
-                        })
+                        playButton.play().catch((error) => {
+                           console.log(`${error} \n cant figure the cause of this error :(`);
+                        });
+                           this.setState({
+                              playIconClass: 'ion-pause active',
+                              duration: playButton.duration,
+                              currentTime: playButton.currentTime
+                           })
                      } else {
                         playButton.pause();
                         this.setState({
@@ -52,7 +56,9 @@ export default class Player extends Component {
                   }} />
 
                   {/*-------managing NEXT SONG play-------*/}
-                  <i className="ion-ios-fastforward" />
+                  <i className="ion-ios-fastforward" onClick={() => {
+                     console.log(`${indexOfTrack}`);
+                  }} />
 
 
                   {/*--------managing song LOOPING---------------*/}
@@ -87,7 +93,20 @@ export default class Player extends Component {
                      }
                   }} />
                </div>
-               <div className="player-seek-bar"></div>
+
+               {/*--------------managing SEEK-BAR------------*/}
+               <div >
+                  <input className="player-seek-bar" type="range" value={currentTime} min={0} max={duration} ref="seek_bar" onChange={(e) => {
+                     this.setState({
+                        currentTime: e.target.value
+                     }, () => {
+                        playButton.currentTime = currentTime
+                     })
+                  }} />
+               </div>
+
+
+               {/*--------managing PLAYER-TIMER---------*/}
                <div className="player-time">
                   {parseInt(currentTime / 60)}:{parseInt(((currentTime / 60) - parseInt(currentTime / 60)) * 60)}
                   /

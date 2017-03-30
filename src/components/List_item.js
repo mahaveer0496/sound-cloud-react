@@ -7,18 +7,19 @@ export default class List_item extends Component {
    }
    handleClick() {
       console.log(`handleClick was called - ${this.props.streamUrl}`);
-      let { songImg, streamUrl, title, genre } = this.props;
+      let { songImg, streamUrl, title, genre, indexOfTrack } = this.props;
       let trackInfoObj = {
          songImg: songImg,
          streamUrl: streamUrl,
          title: title,
          genre: genre,   
+         indexOfTrack:indexOfTrack,
          showPlayer: true
       }
       this.props.onClickHandler(trackInfoObj)
    }
    render() {
-      let { songImg, userImg, title, genre , index } = this.props;
+      let { songImg, userImg, title, genre } = this.props;
       return (
 
          <div onClick={this.handleClick} className="list-item">
