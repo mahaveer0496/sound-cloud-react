@@ -7,16 +7,18 @@ export default class List_item extends Component {
    }
    handleClick() {
       console.log(`handleClick was called - ${this.props.streamUrl}`);
-      let { songImg, streamUrl, title, genre, indexOfTrack } = this.props;
+      let { songImg, streamUrl, onClickHandler, title, genre, indexOfTrack } = this.props;
       let trackInfoObj = {
          songImg: songImg,
          streamUrl: streamUrl,
          title: title,
-         genre: genre,   
-         indexOfTrack:indexOfTrack,
+         genre: genre,
+         indexOfTrack: indexOfTrack,
          showPlayer: true
       }
-      this.props.onClickHandler(trackInfoObj)
+      onClickHandler(trackInfoObj);
+   //    trackUrlHandler(indexOfTrack)
+   //    console.log(`${urlOfNextTrack} - ${urlOfPreviousTrack}`);
    }
    render() {
       let { songImg, userImg, title, genre } = this.props;

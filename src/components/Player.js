@@ -96,7 +96,7 @@ export default class Player extends Component {
 
                {/*--------------managing SEEK-BAR------------*/}
                <div >
-                  <input className="player-seek-bar" type="range" value={currentTime} min={0} max={duration} ref="seek_bar" onChange={(e) => {
+                  <input className="player-seek-bar" type="range" value={currentTime} min={0} max={duration} ref="seek_bar" onClick={()=>{console.log(`this is clicking`);}} onChange={(e) => {
                      this.setState({
                         currentTime: e.target.value
                      }, () => {

@@ -5,3 +5,5 @@ npm-debug.log
 # IntelliJ
 *.iml
 /.idea
+
+bundle.js.map
