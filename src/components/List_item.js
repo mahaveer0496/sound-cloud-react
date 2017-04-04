@@ -21,7 +21,7 @@ export default class List_item extends Component {
       }
       trackUrlHandler(indexOfTrack); //from List_item.js
       onClickHandler(trackInfoObj)
- 
+
    }
    render() {
       let { songImg, userImg, title, genre } = this.props;

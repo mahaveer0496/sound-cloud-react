@@ -269,7 +269,8 @@ a.user-name {
 }
 
 .player-control i {
-   color: #3A3F41
+   color: #3A3F41;
+   cursor: pointer
 }
 
 .player-seek-bar {

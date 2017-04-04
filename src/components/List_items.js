@@ -22,9 +22,6 @@ export default class List_items extends Component {
          this.setState({
             urlOfNextTrack,
             urlOfPreviousTrack
-         }, () => {
-            // console.log(`trackUrlHandler clicked-${indexOfTrack}- ${indexOfNextTrack} - ${indexOfPreviousTrack}`);
-            // console.log(`URL of next Track - ${this.state.urlOfNextTrack} \nURL of previous track - ${this.state.urlOfPreviousTrack}`);
          })
       }
 
