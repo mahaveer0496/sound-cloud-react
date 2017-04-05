@@ -58,7 +58,7 @@ class App extends Component {
          showSpinner: true
       })
       SC.get('/tracks', {
-         q: qParam, limit: 10
+         q: qParam, limit: 20
       }).then(data => {
          this.setState({
             tracks: data,
@@ -73,7 +73,7 @@ class App extends Component {
          showSpinner: true
       })
       SC.get('/tracks', {
-         q: searchTerm, limit: 10
+         q: searchTerm, limit: 20
       }).then(data => {
          this.setState({
             tracks: data,

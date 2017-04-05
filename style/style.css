@@ -30,7 +30,7 @@ body {
    background-color: #3A3F41;
    margin: 0 auto;
    height: 50px;
-   width: 76.3%;
+   width: 75%;
    line-height: 50px;
    position: relative
 }
@@ -48,7 +48,7 @@ form {
    display: inline-block;
    position: absolute;
    top: 2px;
-   right: 10px;
+   right: 3px;
    line-height: 40px;
 }
 
