@@ -2,6 +2,9 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
+   -webkit-transition: all .3s;
+   -moz-transition: all .3s;
+   transition: all .3s;
    /*color: white;*/
 }
 
@@ -9,6 +12,12 @@ body {
    font-size: 20px;
    font-family: 'Open Sans', sans-serif;
    position: relative
+}
+
+div.app-container {
+   -webkit-transition: all .3s linear;
+   -moz-transition: all .3s linear;
+   transition: all .3s linear;
 }
 
 .logo {
@@ -387,4 +396,30 @@ input[type=range]:focus::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-upper {
    background: #2497E3;
+}
+
+.spinner{
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   background-color: transparent;
+   margin: 150px auto;
+   border-right: 6px solid #2497E3;
+   border-top: 1px solid #2497E3;
+   border-left: 1px solid #2497E3;
+   animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+   0%{
+      transform: rotate(20deg)
+   }
+   25%{
+      transform: rotate(90deg)
+   }
+   50%{
+      transform: rotate(180deg)
+   }
+   100%{
+      transform: rotate(360deg)
+   }
 }

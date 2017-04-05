@@ -6,4 +6,5 @@ npm-debug.log
 *.iml
 /.idea
 
-bundle.js.map
+./bundle.js.map
+./bundle.js
