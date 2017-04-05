@@ -13,17 +13,21 @@ export default class Lower_nav extends Component {
       this.props.qParamHandler(e.target.innerHTML);
       this.setState({
          li_className: 'li-active'
+      },()=>{
+         console.log(this.refs)
       })
    }
    render() {
       let listArray = ['Chill', 'Deep', 'Dubstep', 'House', 'Progressive', 'Tech', 'Trance'].map(val => <li className={`lower-nav-li ${this.state.li_className}`} onClick={this.clickHandler} key={val}>{val}</li>)
 
       return (
+         <div className="lower-nav-container">
          <nav className="lower-nav">
-            <ul>
+            <ul className="lower-nav-ul">
                {listArray}
             </ul>
          </nav>
+         </div>
 
       )
    }

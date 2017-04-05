@@ -3,7 +3,6 @@
    padding: 0;
    box-sizing: border-box;
    -webkit-transition: all .3s;
-   -moz-transition: all .3s;
    transition: all .3s;
    /*color: white;*/
 }
@@ -14,17 +13,16 @@ body {
    position: relative
 }
 
-div.app-container {
+.app-container {
    -webkit-transition: all .3s linear;
-   -moz-transition: all .3s linear;
    transition: all .3s linear;
 }
 
 .logo {
-   color: white;
+   color: #e3e3e3;
 }
 
-div.nav-container {
+.nav-container {
    background-color: #3A3F41
 }
 
@@ -35,22 +33,6 @@ div.nav-container {
    width: 76.3%;
    line-height: 50px;
    position: relative
-}
-
-.lower-nav {
-   width: 100%
-}
-
-.lower-nav-li {
-   border-bottom: 2px solid transparent;
-   cursor: pointer
-}
-
-/*.lower-nav-li:hover {
-}*/
-
-.li-active {
-   border-bottom: 2px solid #2497E3
 }
 
 .logo {
@@ -67,16 +49,13 @@ form {
    position: absolute;
    top: 2px;
    right: 10px;
-   font-size: 20px;
    line-height: 40px;
 }
 
 input[type="text"] {
    width: 290px;
    padding: 6px 10px 6px 30px;
-   color: #e3e3e3;
-   font-weight: 300;
-   background-color: transparent;
+   color: #e3e3e3;   
    display: inline-block;
    height: 40px;
    padding: 0 .875rem;
@@ -89,7 +68,26 @@ input[type="text"] {
    -webkit-transition: all .2s ease-in-out;
    transition: all .2s ease-in-out;
 }
+input[type="text"]:focus{
+   background-color: #e3e3e3;
+   color: #2B2B2B
+}
+input[type="text"]:focus::-webkit-input-placeholder{
+   color: #2B2B2B
 
+}
+input[type="text"]:focus::-moz-placeholder{
+   color: #2B2B2B
+
+}
+input[type="text"]:focus:-ms-input-placeholder{
+   color: #2B2B2B
+
+}
+input[type="text"]:focus::placeholder{
+   color: #2B2B2B
+
+}
 input[type="text"]::-webkit-input-placeholder {
    color: #F4F4F4;
    font-size: 10px;
@@ -119,16 +117,24 @@ input[type="text"]::placeholder {
    font-family: 'Open sans'
 }
 
-nav ul {
-   list-style: none;
-   padding-left: 0;
-   text-align: center;
-   margin: 0 auto;
-   width: 75%
+.lower-nav-container {
+   background-color: white;
+   border-bottom: 1px solid #e3e3e3
 }
 
-nav ul li {
-   box-shadow: 0 2px 2px #e3e3e3;
+.lower-nav {
+   width: 75%;
+   margin: 0 auto;
+   text-align: center;
+}
+
+.lower-nav-ul {
+   list-style: none;
+   padding-left: 0;
+   width: 100%
+}
+
+.lower-nav-li {
    display: inline-block;
    width: 14.2%;
    border-right: 1px solid #e3e3e3;
@@ -140,21 +146,22 @@ nav ul li {
    letter-spacing: 2px;
    color: #adadad;
    background-color: white;
+   border-bottom: 1px solid transparent;
+   cursor: pointer;
+}
+.li-active {
+   border-bottom: 1px solid #2497E3
 }
 
-nav ul li:last-child {
-   border-right: 2px solid transparent
+.lower-nav-li:last-child {
+   border-right: 1px solid #e3e3e3
 }
 
-nav ul li a {
-   color: inherit;
-   text-decoration: none;
+.lower-nav-li:first-child {
+   border-left: 1px solid #e3e3e3
 }
 
-nav ul li a:hover {
-   text-decoration: none
-}
-
+/*List_items-----*/
 .songs-container {
    width: 100%;
    background-color: #F4F4F4;

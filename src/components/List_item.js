@@ -27,7 +27,7 @@ export default class List_item extends Component {
       let { songImg, userImg, title, genre } = this.props;
       return (
 
-         <div onClick={this.handleClick} className="list-item">
+         <div onClick={this.handleClick} className="list-item active">
             <div className="song-image" style={{
                backgroundImage: `url(${songImg})`,
                width: `${100}%`,
