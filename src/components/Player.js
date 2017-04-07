@@ -19,7 +19,7 @@ export default class Player extends Component {
       let playButton = this.refs.audio;
       return (
          <div className="player">
-            <audio src={url} ref="audio"></audio>
+            <audio src={url} ref="audio" autoPlay></audio>
             <div className="player-container">
                <div className="player-song-info">
                   <img src={songImg} className="player-song-img"></img>
