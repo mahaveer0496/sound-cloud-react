@@ -182,6 +182,7 @@ input[type="text"]::placeholder {
    margin: 8px;
    background: white;
    border: 1px solid #e3e3e3;
+   box-shadow: 0 2px 5px -2px #2B2B2B
 }
 
 .song-details {
@@ -189,8 +190,7 @@ input[type="text"]::placeholder {
    width: 100%;
    padding: 10px 3px;
 }
-
-.song-details .user-image {
+.user-image {
    display: block;
    width: 24px;
    height: 24px;
@@ -200,7 +200,7 @@ input[type="text"]::placeholder {
    float: left;
 }
 
-.song-details a {
+a {
    font-size: 12px;
    text-decoration: none;
    color: #2B2B2B;
@@ -212,12 +212,27 @@ input[type="text"]::placeholder {
    text-align: left
 }
 
-.song-details a:hover {
+.user-name:hover {
    text-decoration: none
 }
 
-a.user-name {
+.user-name {
    color: #7981B9
+}
+
+.track-active{
+   background-color: rgba(1,1,1,.7);
+   width: 100%;
+   height: 100%;
+   position: relative
+}
+.track-active div{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   font-size: 35px;
+   text-shadow: 0 0 3px #e3e3e3
 }
 
 
