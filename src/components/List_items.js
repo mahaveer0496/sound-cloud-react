@@ -8,12 +8,17 @@ export default class List_items extends Component {
       this.trackUrlHandler = this.trackUrlHandler.bind(this);
       this.state = {
          urlOfNextTrack: '',
-         urlOfPreviousTrack: ''
+         urlOfPreviousTrack: '',
+         selected: null
       }
+   }
+   selected(track) {
+      this.setState({
+         selected: track
+      })
    }
    trackUrlHandler(indexOfTrack) {
       let { tracks } = this.props;
-
       if (indexOfTrack <= tracks.length || indexOfTrack >= 0) {
          let indexOfNextTrack = indexOfTrack + 1;
          let indexOfPreviousTrack = indexOfTrack - 1;
@@ -34,6 +39,8 @@ export default class List_items extends Component {
                   return (
                      <List_item
                         key={track.id}
+                        selected={track === this.state.selected ? true : false}
+                        onClick={() => { this.selected(track) }}
                         indexOfTrack={index}
                         title={track.title}
                         genre={track.genre}
@@ -43,7 +50,10 @@ export default class List_items extends Component {
                         trackUrlHandler={this.trackUrlHandler}
                         urlOfNextTrack={this.state.urlOfNextTrack}
                         urlOfPreviousTrack={this.state.urlOfPreviousTrack}
-                        onClickHandler={this.props.onClickHandler} />
+                        onClickHandler={this.props.onClickHandler}
+                        trackPlayHandler={this.props.trackPlayHandler}
+                        playTrack={this.props.playTrack}
+                     />
                   )
                }
                )}

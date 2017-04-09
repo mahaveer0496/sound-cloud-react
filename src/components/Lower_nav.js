@@ -11,7 +11,7 @@ export default class Lower_nav extends Component {
       let active = this.state.active
       active = active.map(val=> false);
       active[id] = !active[id];
-      console.log(e.target.innerHTML);
+      // console.log(e.target.innerHTML);
       this.props.qParamHandler(e.target.innerHTML);
       this.setState({active})
    }

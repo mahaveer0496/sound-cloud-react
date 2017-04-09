@@ -13,9 +13,9 @@ export default class Player extends Component {
       }
    }
    render() {
-      let { streamUrl, songImg, title, genre, indexOfTrack, urlOfNextTrack, urlOfPreviousTrack } = this.props;
+      let { streamUrl, songImg, title, genre, indexOfTrack, urlOfNextTrack, urlOfPreviousTrack, trackPlayHandler, playTrack } = this.props;
       let { currentTime, duration } = this.state;
-      let url = `${streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`;
+      let url = `${streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`;  
       let playButton = this.refs.audio;
       return (
          <div className="player">
@@ -37,15 +37,16 @@ export default class Player extends Component {
 
 
                   {/*-------managing PLAY and PAUSE----------*/}
-                  <i className={this.state.playIconClass} onClick={() => {
-                     if (playButton.paused) {
+                  <i className={playTrack?'ion-pause':'ion-play'} onClick={() => {
+                     trackPlayHandler();
+                     if (playTrack) {
                         playButton.play().catch(error => console.log(`${error} \n cant figure the cause of this error :(`));
                         this.setState({
                            playIconClass: 'ion-pause active',
                            duration: playButton.duration,
                            currentTime: playButton.currentTime
                         })
-                     } else {
+                     } else{
                         playButton.pause();
                         this.setState({
                            playIconClass: 'ion-play'
@@ -113,6 +114,15 @@ export default class Player extends Component {
             </div>
          </div>
       )
+   }
+   componentWillReceiveProps(nextProps){
+      let playButton = this.refs.audio;
+      if(this.props.playTrack){
+         playButton.pause();
+         console.log(`${this.props.playTrack} and ${nextProps.playTrack}`);         
+      }else{
+         playButton.play();
+      }
    }
    // updating TRACK TIMER
    componentDidMount() {

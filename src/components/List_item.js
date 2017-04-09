@@ -5,13 +5,12 @@ export default class List_item extends Component {
       super(props);
       this.handleClick = this.handleClick.bind(this);
       this.state = {
-         currentTrackPlayState: false
+         trackActiveClass: true
       }
    }
    handleClick(e) {
-      console.log(e);
-      console.log(`handleClick was called - ${this.props.streamUrl}`);
-      let { songImg, streamUrl, urlOfNextTrack, urlOfPreviousTrack, trackUrlHandler, onClickHandler, title, genre, indexOfTrack } = this.props;
+      // console.log(`handleClick was called - ${this.props.streamUrl}`);
+      let { songImg, streamUrl, urlOfNextTrack, urlOfPreviousTrack, trackUrlHandler, onClickHandler, title, genre, indexOfTrack, onClick, trackPlayHandler, playTrack } = this.props;
       let showPlayer = true;
       let trackInfoObj = {
          songImg,
@@ -23,39 +22,39 @@ export default class List_item extends Component {
          urlOfPreviousTrack,
          showPlayer
       }
-      this.setState({
-         currentTrackPlayState: true
-      })
-   
-   trackUrlHandler(indexOfTrack); //from List_item.js
-   onClickHandler(trackInfoObj)
 
-}
-render() {
-   let { songImg, userImg, title, genre } = this.props;
-   return (
+      trackUrlHandler(indexOfTrack); //from List_item.js
+      onClickHandler(trackInfoObj)
+      onClick()
+      trackPlayHandler();
+      // console.log(`and the props is ${playTrack}`);
 
-      <div onClick={this.handleClick} className="list-item active">
-         <div className="song-image" style={{
-            backgroundImage: `url(${songImg})`,
-            width: `${100}%`,
-            height: `${70}px`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition: `${50}%`
+   }
+   render() {
+      let { songImg, userImg, title, genre, selected, trackPlayHandler, playTrack } = this.props;
+      return (
 
-         }}>
-            {this.state.currentTrackPlayState && <div className="track-active">
-               <div className="ion-play"></div>
-            </div>}
-         </div>
-         <div className="song-details">
-            <img src={userImg} alt="user-avatar" className="user-image" />
-            <a href="#">{title}</a>
-            <a href="#" className="user-name">{genre}</a>
-         </div>
-      </div >
+         <div onClick={this.handleClick} className="list-item">
+            <div className="song-image" style={{
+               backgroundImage: `url(${songImg})`,
+               width: `${100}%`,
+               height: `${70}px`,
+               backgroundRepeat: 'no-repeat',
+               backgroundSize: 'cover',
+               backgroundPosition: `${50}%`
+            }}>
+               {selected &&
+                  <div className="track-active">
+                     <div className={playTrack ? 'ion-pause' : 'ion-play'} ></div>
+                  </div>}
+            </div>
+            <div className="song-details">
+               <img src={userImg} alt="user-avatar" className="user-image" />
+               <a href="#">{title}</a>
+               <a href="#" className="user-name">{genre}</a>
+            </div>
+         </div >
 
-   )
-}
+      )
+   }
 }
