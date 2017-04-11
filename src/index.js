@@ -63,20 +63,20 @@ class App extends Component {
                   urlOfPreviousTrack={urlOfPreviousTrack}
                />
             }
-            <div className="nothing" onClick={() => {
+            {/*<div className="nothing" onClick={() => {
                fetch(this.state.next_href).then(response => {
                   response.json().then(data => {
-                     {/*console.log(data)*/}
+
                      this.setState({
                         tracks: this.state.tracks.concat(data.collection)
                      }, () => {
-                        {/*console.log(this.state.next_href)*/}
+
                      })
                   })
                })
             }}>
                just try and click me -_-
-            </div>
+            </div>*/}
          </div>
       )
    }

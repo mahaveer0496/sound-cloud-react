@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import Lower_nav from './Lower_nav'
 
-export default class Nav_bar_container extends Component {
+export default class Upper_nav extends Component {
    constructor(props) {
       super(props);
       this.search = this.search.bind(this)
