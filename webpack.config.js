@@ -20,8 +20,10 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
-    historyApiFallback: true,
+    inline: true, 
+    // historyApiFallback: true,
     contentBase: './'
   },
   devtool: 'source-map'
+
 };

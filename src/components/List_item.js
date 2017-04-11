@@ -8,22 +8,21 @@ export default class List_item extends Component {
          trackActiveClass: true
       }
    }
-   handleClick(e) {
-      // console.log(`handleClick was called - ${this.props.streamUrl}`);
-      let { songImg, streamUrl, urlOfNextTrack, urlOfPreviousTrack, trackUrlHandler, onClickHandler, title, genre, indexOfTrack, onClick, trackPlayHandler, playTrack } = this.props;
-      let showPlayer = true;
-      let trackInfoObj = {
-         songImg,
-         streamUrl,
-         title,
-         genre,
-         indexOfTrack,
-         urlOfNextTrack,
-         urlOfPreviousTrack,
-         showPlayer
-      }
-
-      trackUrlHandler(indexOfTrack); //from List_item.js
+   handleClick() {
+      let { songImg, streamUrl, urlOfNextTrack, urlOfPreviousTrack, trackUrlHandler, onClickHandler, title, genre, indexOfTrack, onClick, trackPlayHandler, playTrack } = this.props,
+         showPlayer = true,
+         trackInfoObj = {
+            songImg,
+            streamUrl,
+            title,
+            genre,
+            indexOfTrack,
+            urlOfNextTrack,
+            urlOfPreviousTrack,
+            showPlayer
+         }
+      //from List_item.js
+      trackUrlHandler(indexOfTrack);
       onClickHandler(trackInfoObj)
       onClick()
       trackPlayHandler();
@@ -45,7 +44,10 @@ export default class List_item extends Component {
             }}>
                {selected &&
                   <div className="track-active">
-                     <div className={playTrack ? 'ion-pause' : 'ion-play'} ></div>
+                     <div className={playTrack
+                        ? 'ion-pause'
+                        : 'ion-play'} >
+                     </div>
                   </div>}
             </div>
             <div className="song-details">

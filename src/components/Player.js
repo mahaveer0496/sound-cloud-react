@@ -13,10 +13,10 @@ export default class Player extends Component {
       }
    }
    render() {
-      let { streamUrl, songImg, title, genre, indexOfTrack, urlOfNextTrack, urlOfPreviousTrack, trackPlayHandler, playTrack } = this.props;
-      let { currentTime, duration } = this.state;
-      let url = `${streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`;  
-      let playButton = this.refs.audio;
+      let { streamUrl, songImg, title, genre, indexOfTrack, urlOfNextTrack, urlOfPreviousTrack, trackPlayHandler, playTrack } = this.props,
+         { currentTime, duration } = this.state,
+         playButton = this.refs.audio,
+         url = `${streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`;
       return (
          <div className="player">
             <audio src={url} ref="audio" autoPlay></audio>
@@ -32,12 +32,16 @@ export default class Player extends Component {
 
                   {/*-------managing PREVIOUS SONG play-------*/}
                   <i className="ion-ios-rewind" onClick={() => {
-                     console.log(`what to do here`);
+                     console.log('what to do here');
                   }} />
 
 
                   {/*-------managing PLAY and PAUSE----------*/}
-                  <i className={playTrack?'ion-pause':'ion-play'} onClick={() => {
+                  <i className={
+                     playTrack
+                        ? 'ion-pause'
+                        : 'ion-play'
+                  } onClick={() => {
                      trackPlayHandler();
                      if (playTrack) {
                         playButton.play().catch(error => console.log(`${error} \n cant figure the cause of this error :(`));
@@ -46,7 +50,7 @@ export default class Player extends Component {
                            duration: playButton.duration,
                            currentTime: playButton.currentTime
                         })
-                     } else{
+                     } else {
                         playButton.pause();
                         this.setState({
                            playIconClass: 'ion-play'
@@ -56,7 +60,7 @@ export default class Player extends Component {
 
                   {/*-------managing NEXT SONG play-------*/}
                   <i className="ion-ios-fastforward" onClick={() => {
-                     console.log(`and here`);
+                     console.log('and here');
                   }} />
 
 
@@ -115,12 +119,12 @@ export default class Player extends Component {
          </div>
       )
    }
-   componentWillReceiveProps(nextProps){
+   componentWillReceiveProps(nextProps) {
       let playButton = this.refs.audio;
-      if(this.props.playTrack){
+      if (this.props.playTrack) {
          playButton.pause();
-         console.log(`${this.props.playTrack} and ${nextProps.playTrack}`);         
-      }else{
+         console.log(`${this.props.playTrack} and ${nextProps.playTrack}`);
+      } else {
          playButton.play();
       }
    }
