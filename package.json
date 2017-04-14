@@ -5,10 +5,9 @@
   "main": "index.js",
   "repository": "git@github.com:mahaveer0496/sound-cloud-react.git",
   "scripts": {
-    "start": "webpack -w",
+    "start": "webpack-dev-server --progress --colors --content-base ./",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch",
-    "sync": "browser-sync start --server --files \"index.html, bundle.js, style/*.css\""
+    "test:watch": "npm run test -- --watch"
   },
   "author": "mahaveer",
   "license": "ISC",
@@ -20,7 +19,7 @@
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^6.10.3",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-server": "^1.16.3"
   },
   "dependencies": {
     "babel-preset-stage-1": "^6.1.18",
