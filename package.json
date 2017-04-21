@@ -6,9 +6,7 @@
   "repository": "git@github.com:mahaveer0496/sound-cloud-react.git",
   "scripts": {
     "start": "node server.js",
-    "webpack": "webpack-dev-server --progress --colors --content-base ./",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "webpack": "webpack-dev-server --progress --colors --content-base ./"
   },
   "author": "mahaveer",
   "license": "ISC",
