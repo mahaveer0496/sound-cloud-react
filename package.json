@@ -6,10 +6,10 @@
   "repository": "git@github.com:mahaveer0496/sound-cloud-react.git",
   "scripts": {
     "start": "node server.js",
-    "webpack": "webpack-dev-server --progress --colors --content-base ./"
+    "webpack": "webpack -w"
   },
   "author": "mahaveer",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",
