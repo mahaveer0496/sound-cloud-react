@@ -6,7 +6,7 @@
   "repository": "git@github.com:mahaveer0496/sound-cloud-react.git",
   "scripts": {
     "start": "node server.js",
-    "webpack": "webpack -w",
+    "webpack": "webpack",
     "postinstall": "npm run webpack"
   },
   "author": "mahaveer",
