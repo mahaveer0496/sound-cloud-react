@@ -5,7 +5,8 @@
   "main": "index.js",
   "repository": "git@github.com:mahaveer0496/sound-cloud-react.git",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --content-base ./",
+    "start": "node server.js",
+    "webpack": "webpack-dev-server --progress --colors --content-base ./",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },
@@ -23,6 +24,7 @@
   },
   "dependencies": {
     "babel-preset-stage-1": "^6.1.18",
+    "express": "^4.15.2",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-router": "^2.0.1",

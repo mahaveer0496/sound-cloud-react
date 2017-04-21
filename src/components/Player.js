@@ -13,7 +13,7 @@ export default class Player extends Component {
       }
    }
    render() {
-      let { streamUrl, songImg, title, genre, indexOfTrack, urlOfNextTrack, urlOfPreviousTrack, trackPlayHandler, playTrack } = this.props,
+      let { streamUrl, songImg, title, genre, indexOfTrack, urlOfNextTrack, urlOfPreviousTrack, trackPlayHandler, playTrack , currentTrackInfo } = this.props,
          { currentTime, duration } = this.state,
          playButton = this.refs.audio,
          url = `${streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`;
@@ -32,7 +32,7 @@ export default class Player extends Component {
 
                   {/*-------managing PREVIOUS SONG play-------*/}
                   <i className="ion-ios-rewind" onClick={() => {
-                     console.log('what to do here');
+                     console.log(indexOfTrack);
                   }} />
 
 

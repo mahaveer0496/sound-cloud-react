@@ -17,6 +17,7 @@ class App extends Component {
       this.qParamHandler = this.qParamHandler.bind(this);
       this.clickHandler = this.clickHandler.bind(this);
       this.trackPlayHandler = this.trackPlayHandler.bind(this);
+      this.currentTrackInfo = this.currentTrackInfo.bind(this);
       this.state = {
          tracks: [],
          streamUrl: '',
@@ -34,6 +35,9 @@ class App extends Component {
          qParam: 'original'
       }
    }
+   currentTrackInfo() {
+      console.log('I was calleeddd woohoooo');
+   }
    render() {
       let { tracks, streamUrl, title, genre, songImg, indexOfTrack, urlOfNextTrack, urlOfPreviousTrack, showListItems, showPlayer, showSpinner, playTrack } = this.state
       return (
@@ -47,6 +51,7 @@ class App extends Component {
                   onClickHandler={this.clickHandler}
                   playTrack={playTrack}
                   trackPlayHandler={this.trackPlayHandler}
+                  currentTrackInfo={this.currentTrackInfo}
                />
             }
 
@@ -61,29 +66,16 @@ class App extends Component {
                   indexOfTrack={indexOfTrack}
                   urlOfNextTrack={urlOfNextTrack}
                   urlOfPreviousTrack={urlOfPreviousTrack}
+                  currentTrackInfo={this.currentTrackInfo}
                />
             }
-            {/*<div className="nothing" onClick={() => {
-               fetch(this.state.next_href).then(response => {
-                  response.json().then(data => {
-
-                     this.setState({
-                        tracks: this.state.tracks.concat(data.collection)
-                     }, () => {
-
-                     })
-                  })
-               })
-            }}>
-               just try and click me -_-
-            </div>*/}
          </div>
       )
    }
    trackPlayHandler() {
       this.setState({
          playTrack: !this.state.playTrack
-      },()=>{
+      }, () => {
          // console.log(`current state changed ${this.state.playTrack}`);
       })
    }
@@ -146,6 +138,9 @@ class App extends Component {
          indexOfTrack,
          urlOfNextTrack,
          urlOfPreviousTrack
+      }, () => {
+         console.log(this.currentTrackInfo());
+         console.log(this.state.tracks[this.state.indexOfTrack].title);
       })
    }
 }

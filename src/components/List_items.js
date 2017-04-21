@@ -56,6 +56,7 @@ export default class List_items extends Component {
                      onClickHandler={this.props.onClickHandler}
                      trackPlayHandler={this.props.trackPlayHandler}
                      playTrack={this.props.playTrack}
+                     currentTrackInfo={this.props.currentTrackInfo}
                   />
                )
                )}
@@ -64,5 +65,3 @@ export default class List_items extends Component {
       )
    }
 }
-
-// .replace('large', 't300x300')

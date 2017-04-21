@@ -9,7 +9,7 @@ export default class List_item extends Component {
       }
    }
    handleClick() {
-      let { songImg, streamUrl, urlOfNextTrack, urlOfPreviousTrack, trackUrlHandler, onClickHandler, title, genre, indexOfTrack, onClick, trackPlayHandler, playTrack } = this.props,
+      let { songImg, streamUrl, urlOfNextTrack, urlOfPreviousTrack, trackUrlHandler, onClickHandler, title, genre, indexOfTrack, onClick, trackPlayHandler, playTrack, currentTrackInfo } = this.props,
          showPlayer = true,
          trackInfoObj = {
             songImg,
@@ -26,11 +26,12 @@ export default class List_item extends Component {
       onClickHandler(trackInfoObj)
       onClick()
       trackPlayHandler();
+      // currentTrackInfo()
       // console.log(`and the props is ${playTrack}`);
 
    }
    render() {
-      let { songImg, userImg, title, genre, selected, trackPlayHandler, playTrack } = this.props;
+      let { songImg, userImg, title, genre, selected, trackPlayHandler, playTrack, currentTrackInfo } = this.props;
       return (
 
          <div onClick={this.handleClick} className="list-item">
