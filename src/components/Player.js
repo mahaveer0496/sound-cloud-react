@@ -13,10 +13,17 @@ export default class Player extends Component {
       }
    }
    render() {
-      let { streamUrl, songImg, title, genre, indexOfTrack, urlOfNextTrack, urlOfPreviousTrack, trackPlayHandler, playTrack , currentTrackInfo } = this.props,
+      let { streamUrl, songImg, title, genre, indexOfTrack, trackPlayHandler, playTrack, currentTrackInfo } = this.props,
          { currentTime, duration } = this.state,
          playButton = this.refs.audio,
-         url = `${streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`;
+         url = `${streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`,
+         trackInfoObj = {
+            songImg,
+            streamUrl,
+            title,
+            genre,
+            indexOfTrack
+         };
       return (
          <div className="player">
             <audio src={url} ref="audio" autoPlay></audio>
@@ -32,7 +39,9 @@ export default class Player extends Component {
 
                   {/*-------managing PREVIOUS SONG play-------*/}
                   <i className="ion-ios-rewind" onClick={() => {
-                     console.log(indexOfTrack);
+                     let newindex = indexOfTrack - 1;
+                     trackInfoObj.indexOfTrack = newindex;
+                     currentTrackInfo(trackInfoObj)
                   }} />
 
 
@@ -60,7 +69,9 @@ export default class Player extends Component {
 
                   {/*-------managing NEXT SONG play-------*/}
                   <i className="ion-ios-fastforward" onClick={() => {
-                     console.log('and here');
+                     let newindex = indexOfTrack + 1;
+                     trackInfoObj.indexOfTrack = newindex;
+                     currentTrackInfo(trackInfoObj)
                   }} />
 
 

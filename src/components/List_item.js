@@ -9,7 +9,7 @@ export default class List_item extends Component {
       }
    }
    handleClick() {
-      let { songImg, streamUrl, urlOfNextTrack, urlOfPreviousTrack, trackUrlHandler, onClickHandler, title, genre, indexOfTrack, onClick, trackPlayHandler, playTrack, currentTrackInfo } = this.props,
+      let { songImg, streamUrl, onClickHandler, title, genre, indexOfTrack, onClick, trackPlayHandler, currentTrackInfo } = this.props,
          showPlayer = true,
          trackInfoObj = {
             songImg,
@@ -17,18 +17,13 @@ export default class List_item extends Component {
             title,
             genre,
             indexOfTrack,
-            urlOfNextTrack,
-            urlOfPreviousTrack,
             showPlayer
          }
       //from List_item.js
-      trackUrlHandler(indexOfTrack);
       onClickHandler(trackInfoObj)
       onClick()
       trackPlayHandler();
-      // currentTrackInfo()
-      // console.log(`and the props is ${playTrack}`);
-
+      currentTrackInfo(trackInfoObj)
    }
    render() {
       let { songImg, userImg, title, genre, selected, trackPlayHandler, playTrack, currentTrackInfo } = this.props;

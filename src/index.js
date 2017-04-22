@@ -32,11 +32,16 @@ class App extends Component {
          showListItems: false,
          showSpinner: true,
          playTrack: false,
-         qParam: 'original'
+         qParam: 'original',
+         currentTrack: ''
       }
    }
-   currentTrackInfo() {
-      console.log('I was calleeddd woohoooo');
+   currentTrackInfo(trackInfoObject) {
+      this.setState({
+         currentTrack: this.state.tracks[trackInfoObject.indexOfTrack]         
+      }, () => {
+         console.log(`${this.state.currentTrack.title}`);
+      })
    }
    render() {
       let { tracks, streamUrl, title, genre, songImg, indexOfTrack, urlOfNextTrack, urlOfPreviousTrack, showListItems, showPlayer, showSpinner, playTrack } = this.state
@@ -139,29 +144,9 @@ class App extends Component {
          urlOfNextTrack,
          urlOfPreviousTrack
       }, () => {
-         console.log(this.currentTrackInfo());
-         console.log(this.state.tracks[this.state.indexOfTrack].title);
+         // console.log(this.state.tracks[this.state.indexOfTrack].title);
       })
    }
 }
 
 ReactDOM.render(<App />, document.querySelector('.app'));
-
-
-// AUTHENTICATE soundcloud
-// SC.initialize({
-//   client_id: '340f063c670272fac27cfa67bffcafc4',
-//   redirect_uri: 'http://external.codecademy.com/soundcloud.html'
-// });
-
-// $(document).ready(function() {
-//   $('a.connect').click(function(e) {
-//     e.preventDefault();
-//     SC.connect(function(){
-//         SC.get('/me', function(me){
-//             $('#username').html(me.username)
-//         })    
-//     })
-//   });
-// });
-
