@@ -56,7 +56,7 @@ form {
 input[type="text"] {
    width: 290px;
    padding: 6px 10px 6px 30px;
-   color: #e3e3e3;   
+   color: #e3e3e3;
    display: inline-block;
    height: 40px;
    padding: 0 .875rem;
@@ -69,26 +69,28 @@ input[type="text"] {
    -webkit-transition: all .2s ease-in-out;
    transition: all .2s ease-in-out;
 }
-input[type="text"]:focus{
+
+input[type="text"]:focus {
    background-color: #e3e3e3;
    color: #2B2B2B
 }
-input[type="text"]:focus::-webkit-input-placeholder{
-   color: #2B2B2B
 
-}
-input[type="text"]:focus::-moz-placeholder{
+input[type="text"]:focus::-webkit-input-placeholder {
    color: #2B2B2B
-
 }
-input[type="text"]:focus:-ms-input-placeholder{
+
+input[type="text"]:focus::-moz-placeholder {
    color: #2B2B2B
-
 }
-input[type="text"]:focus::placeholder{
+
+input[type="text"]:focus:-ms-input-placeholder {
    color: #2B2B2B
-
 }
+
+input[type="text"]:focus::placeholder {
+   color: #2B2B2B
+}
+
 input[type="text"]::-webkit-input-placeholder {
    color: #F4F4F4;
    font-size: 10px;
@@ -150,6 +152,7 @@ input[type="text"]::placeholder {
    border-bottom: 1px solid transparent;
    cursor: pointer;
 }
+
 .li-active {
    border-bottom: 1px solid #2497E3
 }
@@ -162,7 +165,9 @@ input[type="text"]::placeholder {
    border-left: 1px solid #e3e3e3
 }
 
+
 /*List_items-----*/
+
 .songs-container {
    width: 100%;
    background-color: #F4F4F4;
@@ -191,6 +196,7 @@ input[type="text"]::placeholder {
    width: 100%;
    padding: 10px 3px;
 }
+
 .user-image {
    display: block;
    width: 24px;
@@ -221,21 +227,22 @@ a {
    color: #7981B9
 }
 
-.track-active{
-   background-color: rgba(1,1,1,.7);
+.track-active {
+   background-color: rgba(1, 1, 1, .7);
    width: 100%;
    height: 100%;
    position: relative
 }
-.track-active div{
+
+.track-active div {
    position: absolute;
    top: 50%;
    left: 50%;
    -webkit-transform: translate(-50%, -50%);
-           transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
    font-size: 35px;
    text-shadow: 0 0 3px #e3e3e3;
-   color:#2497E3
+   color: #2497E3
 }
 
 
@@ -262,6 +269,7 @@ a {
    display: flex;
    height: 60px;
    min-width: 800px;
+   max-width: 1140px;
    margin: 0 auto;
    -webkit-box-align: center;
    -ms-flex-align: center;
@@ -317,6 +325,10 @@ a {
 .player-control i {
    color: #3A3F41;
    cursor: pointer
+}
+
+.player-seek-bar-div {
+   line-height: 1px
 }
 
 .player-seek-bar {

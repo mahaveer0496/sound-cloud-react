@@ -105,7 +105,7 @@ export default class Player extends Component {
                </div>
 
                {/*--------------managing SEEK-BAR------------*/}
-               <div >
+               <div className="player-seek-bar-div">
                   <input className="player-seek-bar" type="range" value={currentTime} min={0} max={duration} ref="seek_bar" onChange={(event) => {
                      this.setState({
                         currentTime: event.target.value
