@@ -5,10 +5,7 @@
   "main": "index.js",
   "repository": "git@github.com:mahaveer0496/sound-cloud-react.git",
   "scripts": {
-    "start": "node server.js",
-    "webpack": "webpack",
-    "postinstall": "npm run webpack",
-    "test": "webpack-dev-server --content-base ./"
+    "start": "webpack-dev-server --content-base ./"
   },
   "author": "mahaveer",
   "license": "MIT",
