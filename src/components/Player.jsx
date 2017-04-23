@@ -4,13 +4,17 @@ export default class Player extends Component {
    constructor(props) {
       super(props);
       this.tick = this.tick.bind(this);
+      let { streamUrl, songImg, title, genre } = this.props
       this.state = {
          playIconClass: 'ion-play',
          volumeIconClass: 'ion-volume-medium',
          loopIconClass: 'ion-loop',
          duration: 0,
          currentTime: 0,
-         url: `${this.props.streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`
+         url: `${streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`,
+         songImg,
+         title,
+         genre
       }
    }
    render() {
@@ -30,10 +34,10 @@ export default class Player extends Component {
             <audio src={this.state.url} ref="audio" autoPlay></audio>
             <div className="player-container">
                <div className="player-song-info">
-                  <img src={songImg} className="player-song-img"></img>
+                  <img src={this.state.songImg} className="player-song-img"></img>
                   <div className="player-song-description">
-                     <p className="player-song-title">{title}</p>
-                     <p className="player-song-title">{genre}</p>
+                     <p className="player-song-title">{this.state.title}</p>
+                     <p className="player-song-title">{this.state.genre}</p>
                   </div>
                </div>
                <div className="player-control">
@@ -144,7 +148,13 @@ export default class Player extends Component {
       }
       console.log(`current URL : ${this.props.streamUrl} next: ${nextProps.newTrack.stream_url}`)
       this.setState({
-         url: `${nextProps.newTrack.stream_url}?client_id=340f063c670272fac27cfa67bffcafc4`
+         url: `${nextProps.newTrack.stream_url}?client_id=340f063c670272fac27cfa67bffcafc4`,
+         title: nextProps.newTrack.title,
+         songImg: nextProps.newTrack.artwork_url
+            ? nextProps.newTrack.artwork_url
+            : '',
+         genre: nextProps.newTrack.genre
+
       }, () => {
          // console.log(`${this.state.url}`);
       })
