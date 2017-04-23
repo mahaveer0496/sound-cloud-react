@@ -9,14 +9,15 @@ export default class Player extends Component {
          volumeIconClass: 'ion-volume-medium',
          loopIconClass: 'ion-loop',
          duration: 0,
-         currentTime: 0
+         currentTime: 0,
+         url: `${this.props.streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`
       }
    }
    render() {
       let { streamUrl, songImg, title, genre, indexOfTrack, trackPlayHandler, playTrack, currentTrackInfo, newTrack } = this.props,
          { currentTime, duration } = this.state,
          playButton = this.refs.audio,
-         url = `${streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`,
+         // url = `${streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`,
          trackInfoObj = {
             songImg,
             streamUrl,
@@ -26,7 +27,7 @@ export default class Player extends Component {
          };
       return (
          <div className="player">
-            <audio src={url} ref="audio" autoPlay></audio>
+            <audio src={this.state.url} ref="audio" autoPlay></audio>
             <div className="player-container">
                <div className="player-song-info">
                   <img src={songImg} className="player-song-img"></img>
@@ -42,8 +43,9 @@ export default class Player extends Component {
                      let newindex = indexOfTrack - 1;
                      trackInfoObj.indexOfTrack = newindex;
                      currentTrackInfo(trackInfoObj);
-                     console.log(newTrack.title)
-
+                     let { GLOBAL_INDEX } = this.props
+                     GLOBAL_INDEX -= 1
+                     console.log(`${GLOBAL_INDEX}`);
                   }} />
 
 
@@ -136,10 +138,17 @@ export default class Player extends Component {
       let playButton = this.refs.audio;
       if (this.props.playTrack) {
          playButton.pause();
-         console.log(`${this.props.playTrack} and ${nextProps.playTrack}`);
+         // console.log(`${this.props.playTrack} and ${nextProps.playTrack}`);
       } else {
          playButton.play();
       }
+      console.log(`current URL : ${this.props.streamUrl} next: ${nextProps.newTrack.stream_url}`)
+      this.setState({
+         url: `${nextProps.newTrack.stream_url}?client_id=340f063c670272fac27cfa67bffcafc4`
+      }, () => {
+         // console.log(`${this.state.url}`);
+      })
+
    }
    // updating TRACK TIMER
    componentDidMount() {

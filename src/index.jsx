@@ -7,9 +7,9 @@ import * as SC from 'soundcloud';
 import Nav_bar_container from './components/Nav_bar_container';
 import List_items from './components/List_items';
 import Player from './components/Player';
-import Spinner from './components/Spinner'
+import Spinner from './components/Spinner';
 
-
+let GLOBAL_INDEX = 12;
 class App extends Component {
    constructor(props) {
       super(props);
@@ -41,10 +41,12 @@ class App extends Component {
          newTrack: this.state.tracks[trackInfoObject.indexOfTrack]
       }, () => {
          // console.log(`${this.state.newTrack.title}`);
+         console.log(`${GLOBAL_INDEX}`);
+
       })
    }
    render() {
-      let { tracks, streamUrl, title, genre, songImg, indexOfTrack, showListItems, showPlayer, showSpinner, playTrack, newTrack } = this.state         
+      let { tracks, streamUrl, title, genre, songImg, indexOfTrack, showListItems, showPlayer, showSpinner, playTrack, newTrack } = this.state
       return (
          <div ref="appContainer" className="app-container">
             <Nav_bar_container qParamHandler={this.qParamHandler} searchHandler={this.searchHandler} />
@@ -71,6 +73,7 @@ class App extends Component {
                   indexOfTrack={indexOfTrack}
                   currentTrackInfo={this.currentTrackInfo}
                   newTrack={newTrack}
+                  GLOBAL_INDEX={GLOBAL_INDEX}
                />
             }
          </div>
