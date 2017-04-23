@@ -33,18 +33,18 @@ class App extends Component {
          showSpinner: true,
          playTrack: false,
          qParam: 'original',
-         currentTrack: ''
+         newTrack: ''
       }
    }
    currentTrackInfo(trackInfoObject) {
       this.setState({
-         currentTrack: this.state.tracks[trackInfoObject.indexOfTrack]         
+         newTrack: this.state.tracks[trackInfoObject.indexOfTrack]
       }, () => {
-         console.log(`${this.state.currentTrack.title}`);
+         // console.log(`${this.state.newTrack.title}`);
       })
    }
    render() {
-      let { tracks, streamUrl, title, genre, songImg, indexOfTrack, urlOfNextTrack, urlOfPreviousTrack, showListItems, showPlayer, showSpinner, playTrack } = this.state
+      let { tracks, streamUrl, title, genre, songImg, indexOfTrack, showListItems, showPlayer, showSpinner, playTrack, newTrack } = this.state         
       return (
          <div ref="appContainer" className="app-container">
             <Nav_bar_container qParamHandler={this.qParamHandler} searchHandler={this.searchHandler} />
@@ -69,9 +69,8 @@ class App extends Component {
                   genre={genre}
                   songImg={songImg}
                   indexOfTrack={indexOfTrack}
-                  urlOfNextTrack={urlOfNextTrack}
-                  urlOfPreviousTrack={urlOfPreviousTrack}
                   currentTrackInfo={this.currentTrackInfo}
+                  newTrack={newTrack}
                />
             }
          </div>

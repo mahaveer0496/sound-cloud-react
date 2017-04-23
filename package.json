@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node server.js",
     "webpack": "webpack",
-    "postinstall": "npm run webpack"
+    "postinstall": "npm run webpack",
+    "test": "webpack-dev-server --content-base ./"
   },
   "author": "mahaveer",
   "license": "MIT",
