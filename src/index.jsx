@@ -9,7 +9,10 @@ import List_items from './components/List_items';
 import Player from './components/Player';
 import Spinner from './components/Spinner';
 
-let GLOBAL_INDEX = 12;
+
+// global variables
+global.GLOBAL_INDEX = 0;
+
 class App extends Component {
    constructor(props) {
       super(props);
@@ -34,16 +37,19 @@ class App extends Component {
          playTrack: false,
          qParam: 'original',
          newTrack: ''
+         // globalIndex: 0
       }
    }
    currentTrackInfo(trackInfoObject) {
-      this.setState({
-         newTrack: this.state.tracks[trackInfoObject.indexOfTrack]
-      }, () => {
-         // console.log(`${this.state.newTrack.title}`);
-         console.log(`${GLOBAL_INDEX}`);
+      if (global.GLOBAL_INDEX >= 0 && global.GLOBAL_INDEX <= this.state.tracks.length) {
+         this.setState({
+            newTrack: this.state.tracks[global.GLOBAL_INDEX]
+            // globalIndex: global.GLOBAL_INDEX
+         }, () => {
+            console.log(`${this.state.newTrack.title}`);
+         })
 
-      })
+      }
    }
    render() {
       let { tracks, streamUrl, title, genre, songImg, indexOfTrack, showListItems, showPlayer, showSpinner, playTrack, newTrack } = this.state
@@ -73,7 +79,6 @@ class App extends Component {
                   indexOfTrack={indexOfTrack}
                   currentTrackInfo={this.currentTrackInfo}
                   newTrack={newTrack}
-                  GLOBAL_INDEX={GLOBAL_INDEX}
                />
             }
          </div>
@@ -136,6 +141,7 @@ class App extends Component {
    }
    clickHandler(trackInfoObject) {
       let { streamUrl, songImg, genre, title, showPlayer, indexOfTrack, urlOfNextTrack, urlOfPreviousTrack } = trackInfoObject
+      global.GLOBAL_INDEX = indexOfTrack
       this.setState({
          streamUrl,
          songImg,

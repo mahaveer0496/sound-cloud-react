@@ -46,10 +46,10 @@ export default class Player extends Component {
                   <i className="ion-ios-rewind" onClick={() => {
                      let newindex = indexOfTrack - 1;
                      trackInfoObj.indexOfTrack = newindex;
+                     if (global.GLOBAL_INDEX > 0) {
+                        global.GLOBAL_INDEX -= 1;
+                     }
                      currentTrackInfo(trackInfoObj);
-                     let { GLOBAL_INDEX } = this.props
-                     GLOBAL_INDEX -= 1
-                     console.log(`${GLOBAL_INDEX}`);
                   }} />
 
 
@@ -79,7 +79,8 @@ export default class Player extends Component {
                   <i className="ion-ios-fastforward" onClick={() => {
                      let newindex = indexOfTrack + 1;
                      trackInfoObj.indexOfTrack = newindex;
-                     currentTrackInfo(trackInfoObj)
+                     global.GLOBAL_INDEX += 1;
+                     currentTrackInfo(trackInfoObj);
                   }} />
 
 
