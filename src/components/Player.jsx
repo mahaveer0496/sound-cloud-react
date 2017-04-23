@@ -35,10 +35,10 @@ export default class Player extends Component {
                <div className="player-control">
 
                   {/*-------managing PREVIOUS SONG play-------*/}
-                  <i className="ion-ios-rewind" onClick={() => {                     
-                     global.GLOBAL_INDEX > 0 
-                     ? global.GLOBAL_INDEX -= 1 
-                     : global.GLOBAL_INDEX
+                  <i className="ion-ios-rewind" onClick={() => {
+                     global.GLOBAL_INDEX > 0
+                        ? global.GLOBAL_INDEX -= 1
+                        : global.GLOBAL_INDEX
                      currentTrackInfo();
                   }} />
 
@@ -106,9 +106,9 @@ export default class Player extends Component {
 
                {/*--------------managing SEEK-BAR------------*/}
                <div >
-                  <input className="player-seek-bar" type="range" value={currentTime} min={0} max={duration} ref="seek_bar" onClick={() => { console.log(`this is clicking`); }} onChange={(e) => {
+                  <input className="player-seek-bar" type="range" value={currentTime} min={0} max={duration} ref="seek_bar" onChange={(event) => {
                      this.setState({
-                        currentTime: e.target.value
+                        currentTime: event.target.value
                      }, () => {
                         playButton.currentTime = currentTime
                      })
