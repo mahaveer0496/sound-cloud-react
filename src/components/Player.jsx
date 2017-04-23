@@ -18,17 +18,9 @@ export default class Player extends Component {
       }
    }
    render() {
-      let { streamUrl, songImg, title, genre, indexOfTrack, trackPlayHandler, playTrack, currentTrackInfo, newTrack } = this.props,
+      let { trackPlayHandler, playTrack, currentTrackInfo } = this.props,
          { currentTime, duration } = this.state,
-         playButton = this.refs.audio,
-         // url = `${streamUrl}?client_id=340f063c670272fac27cfa67bffcafc4`,
-         trackInfoObj = {
-            songImg,
-            streamUrl,
-            title,
-            genre,
-            indexOfTrack
-         };
+         playButton = this.refs.audio;
       return (
          <div className="player">
             <audio src={this.state.url} ref="audio" autoPlay></audio>
@@ -43,13 +35,11 @@ export default class Player extends Component {
                <div className="player-control">
 
                   {/*-------managing PREVIOUS SONG play-------*/}
-                  <i className="ion-ios-rewind" onClick={() => {
-                     let newindex = indexOfTrack - 1;
-                     trackInfoObj.indexOfTrack = newindex;
-                     if (global.GLOBAL_INDEX > 0) {
-                        global.GLOBAL_INDEX -= 1;
-                     }
-                     currentTrackInfo(trackInfoObj);
+                  <i className="ion-ios-rewind" onClick={() => {                     
+                     global.GLOBAL_INDEX > 0 
+                     ? global.GLOBAL_INDEX -= 1 
+                     : global.GLOBAL_INDEX
+                     currentTrackInfo();
                   }} />
 
 
@@ -77,16 +67,13 @@ export default class Player extends Component {
 
                   {/*-------managing NEXT SONG play-------*/}
                   <i className="ion-ios-fastforward" onClick={() => {
-                     let newindex = indexOfTrack + 1;
-                     trackInfoObj.indexOfTrack = newindex;
                      global.GLOBAL_INDEX += 1;
-                     currentTrackInfo(trackInfoObj);
+                     currentTrackInfo();
                   }} />
 
 
                   {/*--------managing song LOOPING---------------*/}
                   <i className={this.state.loopIconClass} onClick={() => {
-
                      if (!playButton.loop) {
                         playButton.loop = true;
                         this.setState({
@@ -143,11 +130,9 @@ export default class Player extends Component {
       let playButton = this.refs.audio;
       if (this.props.playTrack) {
          playButton.pause();
-         // console.log(`${this.props.playTrack} and ${nextProps.playTrack}`);
       } else {
          playButton.play();
       }
-      console.log(`current URL : ${this.props.streamUrl} next: ${nextProps.newTrack.stream_url}`)
       this.setState({
          url: `${nextProps.newTrack.stream_url}?client_id=340f063c670272fac27cfa67bffcafc4`,
          title: nextProps.newTrack.title,
@@ -155,7 +140,6 @@ export default class Player extends Component {
             ? nextProps.newTrack.artwork_url
             : '',
          genre: nextProps.newTrack.genre
-
       }, () => {
          // console.log(`${this.state.url}`);
       })

@@ -40,7 +40,7 @@ class App extends Component {
          // globalIndex: 0
       }
    }
-   currentTrackInfo(trackInfoObject) {
+   currentTrackInfo() {
       if (global.GLOBAL_INDEX >= 0 && global.GLOBAL_INDEX <= this.state.tracks.length) {
          this.setState({
             newTrack: this.state.tracks[global.GLOBAL_INDEX]
