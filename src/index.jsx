@@ -37,14 +37,12 @@ class App extends Component {
          playTrack: false,
          qParam: 'original',
          newTrack: ''
-         // globalIndex: 0
       }
    }
    currentTrackInfo() {
       if (global.GLOBAL_INDEX >= 0 && global.GLOBAL_INDEX <= this.state.tracks.length) {
          this.setState({
             newTrack: this.state.tracks[global.GLOBAL_INDEX]
-            // globalIndex: global.GLOBAL_INDEX
          }, () => {
             console.log(`${this.state.newTrack.title}`);
          })
@@ -87,8 +85,6 @@ class App extends Component {
    trackPlayHandler() {
       this.setState({
          playTrack: !this.state.playTrack
-      }, () => {
-         // console.log(`current state changed ${this.state.playTrack}`);
       })
    }
    componentDidMount() {
@@ -98,14 +94,13 @@ class App extends Component {
       SC.get('/tracks', {
          q: this.state.qParam, limit: 200, offset: 0, linked_partitioning: 1
       }).then(data => {
-         // console.log(`${JSON.stringify(data)}`);
          this.setState({
             tracks: data.collection,
             next_href: data.next_href,
             showListItems: true,
             showSpinner: false
          })
-      });
+      })
    }
    qParamHandler(qParam) {
       this.setState({
@@ -121,7 +116,7 @@ class App extends Component {
             showListItems: true,
             showSpinner: false
          })
-      });
+      })
    }
    searchHandler(searchTerm) {
       this.setState({
@@ -151,8 +146,6 @@ class App extends Component {
          indexOfTrack,
          urlOfNextTrack,
          urlOfPreviousTrack
-      }, () => {
-         // console.log(this.state.tracks[this.state.indexOfTrack].title);
       })
    }
 }

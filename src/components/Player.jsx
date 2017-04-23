@@ -140,8 +140,6 @@ export default class Player extends Component {
             ? nextProps.newTrack.artwork_url
             : '',
          genre: nextProps.newTrack.genre
-      }, () => {
-         // console.log(`${this.state.url}`);
       })
 
    }

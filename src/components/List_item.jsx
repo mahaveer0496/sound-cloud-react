@@ -23,10 +23,10 @@ export default class List_item extends Component {
       onClickHandler(trackInfoObj)
       onClick()
       trackPlayHandler();
-      currentTrackInfo(trackInfoObj)
+      currentTrackInfo()
    }
    render() {
-      let { songImg, userImg, title, genre, selected, trackPlayHandler, playTrack, currentTrackInfo } = this.props;
+      let { songImg, userImg, title, genre, selected, playTrack } = this.props;
       return (
 
          <div onClick={this.handleClick} className="list-item">
