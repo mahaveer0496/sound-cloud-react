@@ -5,11 +5,12 @@ export default class Upper_nav extends Component {
       super(props);
       this.search = this.search.bind(this)
    }
-   search(e) {
-      e.preventDefault();
-      var searchParam = this.refs.searchTerm.value
-      this.props.searchHandler(searchParam)
-      // this.refs.searchTerm.value = ''
+   search(event) {
+      event.preventDefault();
+      let searchParam = this.refs.searchTerm.value;
+      this.props.searchHandler(searchParam);
+      global.GLOBAL_INDEX = null;
+      this.refs.searchTerm.value = ''
    }
    render() {
       return (
