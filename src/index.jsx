@@ -12,6 +12,7 @@ import Spinner from './components/Spinner';
 
 // global variables
 global.GLOBAL_INDEX = null;
+global.GLOBAL_PLAY_ICON = true;
 
 class App extends Component {
    constructor(props) {
@@ -39,15 +40,11 @@ class App extends Component {
          newTrack: ''
       }
    }
-   currentTrackInfo() {
-      if (global.GLOBAL_INDEX >= 0 && global.GLOBAL_INDEX <= this.state.tracks.length) {
-         this.setState({
-            newTrack: this.state.tracks[global.GLOBAL_INDEX]
-         }, () => {
-            console.log(`${this.state.newTrack.title}`);
-         })
-
-      }
+   trackPlayHandler() {
+      
+      this.setState({
+         playTrack: global.GLOBAL_PLAY_ICON
+      })
    }
    render() {
       let { tracks, streamUrl, title, genre, songImg, indexOfTrack, showListItems, showPlayer, showSpinner, playTrack, newTrack } = this.state
@@ -82,10 +79,15 @@ class App extends Component {
          </div>
       )
    }
-   trackPlayHandler() {
-      this.setState({
-         playTrack: !this.state.playTrack
-      })
+   currentTrackInfo() {
+      if (global.GLOBAL_INDEX >= 0 && global.GLOBAL_INDEX <= this.state.tracks.length) {
+         this.setState({
+            newTrack: this.state.tracks[global.GLOBAL_INDEX]
+         }, () => {
+            console.log(`${this.state.newTrack.title}`);
+         })
+
+      }
    }
    componentDidMount() {
       SC.initialize({

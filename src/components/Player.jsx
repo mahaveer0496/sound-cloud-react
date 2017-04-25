@@ -49,6 +49,11 @@ export default class Player extends Component {
                         ? 'ion-pause'
                         : 'ion-play'
                   } onClick={() => {
+                     if (global.GLOBAL_PLAY_ICON) {
+                        global.GLOBAL_PLAY_ICON = false
+                     } else {
+                        global.GLOBAL_PLAY_ICON = true
+                     }
                      trackPlayHandler();
                      if (playTrack) {
                         playButton.play().catch(error => console.log(`${error} \n cant figure the cause of this error :(`));
@@ -120,7 +125,7 @@ export default class Player extends Component {
                <div className="player-time">
                   {parseInt(currentTime / 60)}:{parseInt(((currentTime / 60) - parseInt(currentTime / 60)) * 60)}
                   /
-{parseInt(duration / 60)}:{parseInt(((duration / 60) - parseInt(duration / 60)) * 60)}
+                  {parseInt(duration / 60)}:{parseInt(((duration / 60) - parseInt(duration / 60)) * 60)}
                </div>
             </div>
          </div>

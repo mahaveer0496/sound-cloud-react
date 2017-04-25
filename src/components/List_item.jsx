@@ -17,12 +17,23 @@ export default class List_item extends Component {
             genre,
             indexOfTrack,
             showPlayer: true
-         }
-      //from List_item.js
+         };
+      if (global.GLOBAL_PLAY_ICON) {
+         global.GLOBAL_PLAY_ICON = false
+      } else {
+         global.GLOBAL_PLAY_ICON = true
+      }
+      if (global.GLOBAL_INDEX !== indexOfTrack) {
+         global.GLOBAL_PLAY_ICON = true
+      }
+      // console.log(`IT: ${indexOfTrack}`);
       onClickHandler(trackInfoObj)
       onClick()
       trackPlayHandler();
       currentTrackInfo()
+      // console.log(`GIA: ${global.GLOBAL_INDEX}`);
+      // console.log(`ITA: ${indexOfTrack}`);
+
    }
    render() {
       let { songImg, userImg, title, genre, playTrack, indexOfTrack } = this.props;
@@ -38,9 +49,10 @@ export default class List_item extends Component {
             }}>
                {indexOfTrack === global.GLOBAL_INDEX &&
                   <div className="track-active">
-                     <div className={playTrack
-                        ? 'ion-pause'
-                        : 'ion-play'} >
+                     <div className={
+                        playTrack
+                           ? 'ion-pause'
+                           : 'ion-play'} >
                      </div>
                   </div>}
             </div>
