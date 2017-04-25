@@ -11,7 +11,7 @@ import Spinner from './components/Spinner';
 
 
 // global variables
-global.GLOBAL_INDEX = 0;
+global.GLOBAL_INDEX = null;
 
 class App extends Component {
    constructor(props) {

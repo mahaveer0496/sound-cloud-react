@@ -12,7 +12,8 @@ export default class Lower_nav extends Component {
       active = active.map(val => false);
       active[id] = !active[id];
       this.props.qParamHandler(event.target.innerHTML);
-      this.setState({ active })
+      this.setState({ active });
+      global.GLOBAL_INDEX = null;
    }
    render() {
       let listArray = ['Chill', 'Deep', 'Dubstep', 'House', 'Progressive', 'Tech', 'Trance'].
