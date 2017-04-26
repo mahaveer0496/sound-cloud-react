@@ -40,8 +40,7 @@ class App extends Component {
          newTrack: ''
       }
    }
-   trackPlayHandler() {
-      
+   trackPlayHandler() {      
       this.setState({
          playTrack: global.GLOBAL_PLAY_ICON
       })

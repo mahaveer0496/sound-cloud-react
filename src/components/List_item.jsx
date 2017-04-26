@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+//eslint no-unused-vars: 2
 
 export default class List_item extends Component {
    constructor(props) {

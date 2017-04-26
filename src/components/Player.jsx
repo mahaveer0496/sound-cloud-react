@@ -58,16 +58,12 @@ export default class Player extends Component {
                      if (playButton.paused) {
                         playButton.play().catch(error => console.log(`${error} \n cant figure the cause of this error :(`));
                         this.setState({
-                           playIconClass: 'ion-pause active',
                            duration: playButton.duration,
                            currentTime: playButton.currentTime
                         })
                      } else {
                         playButton.pause();
-                        this.setState({
-                           playIconClass: 'ion-play'
-                        })
-                     }
+                     }                     
                   }} />
 
                   {/*-------managing NEXT SONG play-------*/}
@@ -132,12 +128,12 @@ export default class Player extends Component {
       )
    }
    componentWillReceiveProps(nextProps) {
-      // let playButton = this.refs.audio;
-      // if (this.props.playTrack) {
-      //    playButton.pause();
-      // } else {
-      //    playButton.play();
-      // }
+      let playButton = this.refs.audio;
+      if (nextProps.playTrack) {
+         playButton.play();
+      } else {
+         playButton.pause();
+      }
       this.setState({
          url: `${nextProps.newTrack.stream_url}?client_id=340f063c670272fac27cfa67bffcafc4`,
          title: nextProps.newTrack.title,
@@ -163,11 +159,6 @@ export default class Player extends Component {
       this.setState({
          currentTime: playButton.currentTime,
          duration: playButton.duration
-      })
-      if (this.state.currentTime == this.state.duration) {
-         this.setState({
-            playIconClass: 'ion-play'
-         })
-      }
+      })      
    }
 }
