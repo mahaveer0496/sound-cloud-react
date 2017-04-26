@@ -224,7 +224,8 @@ a {
 }
 
 .user-name {
-   color: #7981B9
+   color: #7981B9;
+   min-height: 15px
 }
 
 .track-active {
