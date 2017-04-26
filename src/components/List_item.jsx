@@ -5,9 +5,6 @@ export default class List_item extends Component {
    constructor(props) {
       super(props);
       this.handleClick = this.handleClick.bind(this);
-      this.state = {
-         trackActiveClass: true
-      }
    }
    handleClick() {
       let { songImg, streamUrl, onClickHandler, title, genre, indexOfTrack, onClick, trackPlayHandler, currentTrackInfo } = this.props,

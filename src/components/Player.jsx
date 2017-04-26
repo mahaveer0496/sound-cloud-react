@@ -6,7 +6,6 @@ export default class Player extends Component {
       this.tick = this.tick.bind(this);
       let { streamUrl, songImg, title, genre } = this.props
       this.state = {
-         playIconClass: 'ion-play',
          volumeIconClass: 'ion-volume-medium',
          loopIconClass: 'ion-loop',
          duration: 0,
@@ -36,6 +35,7 @@ export default class Player extends Component {
 
                   {/*-------managing PREVIOUS SONG play-------*/}
                   <i className="ion-ios-rewind" onClick={() => {
+                     global.GLOBAL_PLAY_ICON = true;
                      global.GLOBAL_INDEX > 0
                         ? global.GLOBAL_INDEX -= 1
                         : global.GLOBAL_INDEX
@@ -68,6 +68,7 @@ export default class Player extends Component {
 
                   {/*-------managing NEXT SONG play-------*/}
                   <i className="ion-ios-fastforward" onClick={() => {
+                     global.GLOBAL_PLAY_ICON = true
                      global.GLOBAL_INDEX += 1;
                      currentTrackInfo();
                   }} />

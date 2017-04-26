@@ -30,8 +30,6 @@ class App extends Component {
          title: '',
          genre: '',
          indexOfTrack: 0,
-         urlOfNextTrack: '',
-         urlOfPreviousTrack: '',
          showPlayer: false,
          showListItems: false,
          showSpinner: true,
@@ -39,12 +37,7 @@ class App extends Component {
          qParam: 'original',
          newTrack: ''
       }
-   }
-   trackPlayHandler() {      
-      this.setState({
-         playTrack: global.GLOBAL_PLAY_ICON
-      })
-   }
+   }   
    render() {
       let { tracks, streamUrl, title, genre, songImg, indexOfTrack, showListItems, showPlayer, showSpinner, playTrack, newTrack } = this.state
       return (
@@ -78,14 +71,16 @@ class App extends Component {
          </div>
       )
    }
+   trackPlayHandler() {      
+      this.setState({
+         playTrack: global.GLOBAL_PLAY_ICON
+      })
+   }
    currentTrackInfo() {
       if (global.GLOBAL_INDEX >= 0 && global.GLOBAL_INDEX <= this.state.tracks.length) {
          this.setState({
             newTrack: this.state.tracks[global.GLOBAL_INDEX]
-         }, () => {
-            console.log(`${this.state.newTrack.title}`);
          })
-
       }
    }
    componentDidMount() {
@@ -136,7 +131,7 @@ class App extends Component {
       });
    }
    clickHandler(trackInfoObject) {
-      let { streamUrl, songImg, genre, title, showPlayer, indexOfTrack, urlOfNextTrack, urlOfPreviousTrack } = trackInfoObject
+      let { streamUrl, songImg, genre, title, showPlayer, indexOfTrack, } = trackInfoObject
       global.GLOBAL_INDEX = indexOfTrack
       this.setState({
          streamUrl,
@@ -144,9 +139,7 @@ class App extends Component {
          genre,
          title,
          showPlayer,
-         indexOfTrack,
-         urlOfNextTrack,
-         urlOfPreviousTrack
+         indexOfTrack
       })
    }
 }
