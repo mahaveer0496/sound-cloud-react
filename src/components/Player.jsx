@@ -55,7 +55,7 @@ export default class Player extends Component {
                         global.GLOBAL_PLAY_ICON = true
                      }
                      trackPlayHandler();
-                     if (playTrack) {
+                     if (playButton.paused) {
                         playButton.play().catch(error => console.log(`${error} \n cant figure the cause of this error :(`));
                         this.setState({
                            playIconClass: 'ion-pause active',
@@ -132,12 +132,12 @@ export default class Player extends Component {
       )
    }
    componentWillReceiveProps(nextProps) {
-      let playButton = this.refs.audio;
-      if (this.props.playTrack) {
-         playButton.pause();
-      } else {
-         playButton.play();
-      }
+      // let playButton = this.refs.audio;
+      // if (this.props.playTrack) {
+      //    playButton.pause();
+      // } else {
+      //    playButton.play();
+      // }
       this.setState({
          url: `${nextProps.newTrack.stream_url}?client_id=340f063c670272fac27cfa67bffcafc4`,
          title: nextProps.newTrack.title,

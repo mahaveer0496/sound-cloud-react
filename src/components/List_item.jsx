@@ -26,14 +26,10 @@ export default class List_item extends Component {
       if (global.GLOBAL_INDEX !== indexOfTrack) {
          global.GLOBAL_PLAY_ICON = true
       }
-      // console.log(`IT: ${indexOfTrack}`);
       onClickHandler(trackInfoObj)
       onClick()
       trackPlayHandler();
       currentTrackInfo()
-      // console.log(`GIA: ${global.GLOBAL_INDEX}`);
-      // console.log(`ITA: ${indexOfTrack}`);
-
    }
    render() {
       let { songImg, userImg, title, genre, playTrack, indexOfTrack } = this.props;
